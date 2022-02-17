@@ -1,5 +1,5 @@
-<template>
-<label class="label">{{ text }}</label>
+<template lang="pug">
+span.label {{ text }}
 </template>
 
 <script lang="ts">
@@ -15,3 +15,7 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss">
+@import "./UILabel.scss";
+</style>

@@ -11,13 +11,26 @@ This is a Vue component library that will contain all components you need to sta
 ## Installation
 **Using npm**
 ```
-  npm install vue-components-ui --save
+npm install vue-components-ui --save
 ```
 
 ## Usage
-### Using npm
 ```
-  npm install vue-components-ui --save
+<template lang="pug">
+UILabel(text="Hello world from UILabel")
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { UILabel } from 'vue-components-ui';
+
+export default defineComponent({
+  name: 'Component',
+  components: {
+    UILabel,
+  },
+});
+</script>
 ```
 
 ## Repository
@@ -30,10 +43,13 @@ Under construction, [agrisom/vue-components-docs](https://github.com/agrisom/vue
 
 ## Changelog
 All notable changes to this project will be documented in this file.
-### [0.0.2] - 2022-02-17
-- Init library
+### [0.0.3] - 2022-02-17
+- Readme file created
+- Adds Storybook
 
-[view diff](https://github.com/standard/standard/compare/v3.9.0...v4.0.0)
+### [0.0.2] - 2022-02-08
+- Adds UILabel for testing purposes
+- First publish on npm
 
-### [0.0.1] - 2022-02-10
+### [0.0.1] - 2022-02-08
 - Init library
