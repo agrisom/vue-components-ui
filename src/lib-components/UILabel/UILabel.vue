@@ -1,5 +1,5 @@
-<template>
-  <label>{{ text }}</label>
+<template lang="pug">
+label {{ text }}
 </template>
 
 <script lang="ts">
