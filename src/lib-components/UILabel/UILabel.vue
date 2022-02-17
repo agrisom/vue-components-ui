@@ -1,5 +1,5 @@
-<template lang="pug">
-label {{ text }}
+<template>
+<label class="label">{{ text }}</label>
 </template>
 
 <script lang="ts">
@@ -15,6 +15,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style>
-</style>
