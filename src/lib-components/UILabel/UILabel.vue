@@ -1,21 +1,21 @@
 <template lang="pug">
-span.label {{ text }}
+span.label {{ props.text }}
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+interface Props {
+  text: string;
+  color?: string;
+}
 
-export default defineComponent({
-  name: 'UILabel',
-  props: {
-    text: {
-      type: String,
-      required: true,
-    },
-  },
+const props = withDefaults(defineProps<Props>(), {
+  color: '#000',
 });
 </script>
 
 <style lang="scss">
-@import "./UILabel.scss";
+.label {
+  --label-color: v-bind(props.color);
+  color: var(--label-color);
+}
 </style>
