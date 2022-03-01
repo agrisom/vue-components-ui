@@ -1,21 +1,37 @@
 <template lang="pug">
 span.label {{ props.text }}
+p
+  b props.color: <br>
+  input(type="color" :value="props.color" @change="changeColor")
+  span.label {{ props.color }}
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
+
 interface Props {
   text: string;
   color?: string;
 }
-
-const props = withDefaults(defineProps<Props>(), {
+const props: Readonly<Props> = withDefaults(defineProps<Props>(), {
   color: '#000',
 });
+const emit = defineEmits<{
+  (e: 'update:color', color: string): void
+}>();
+
+const colorC = computed(() => props.color ?? '#000');
+
+function changeColor(event: Event) {
+  if (event.target) {
+    emit('update:color', (event.target as HTMLInputElement).value);
+  }
+}
 </script>
 
 <style lang="scss">
 .label {
-  --label-color: v-bind(props.color);
+  --label-color: v-bind(colorC);
   color: var(--label-color);
 }
 </style>

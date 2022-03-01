@@ -1,3 +1,4 @@
+import { reactive } from 'vue';
 import UILabel from './UILabel.vue';
 
 export default {
@@ -5,7 +6,13 @@ export default {
   component: UILabel,
 };
 
-const Template = (args) => <UILabel {...args} />;
+const Template = (args) => ({
+  components: { UILabel },
+  setup() {
+    return { args: reactive(args) };
+  },
+  template: '<UILabel v-bind="args" v-model:color="args.color"/>',
+});
 
 export const _default = Template.bind({});
 _default.args = {

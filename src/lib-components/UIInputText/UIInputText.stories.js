@@ -1,3 +1,4 @@
+import { reactive } from 'vue';
 import UIInputText from './UIInputText.vue';
 
 export default {
@@ -5,17 +6,23 @@ export default {
   component: UIInputText,
 };
 
-const Template = (args) => <UIInputText {...args} />;
+const Template = (args) => ({
+  components: { UIInputText },
+  setup() {
+    return { args: reactive(args) };
+  },
+  template: '<UIInputText v-bind="args" v-model="args.modelValue" />',
+});
 
-export const _default = Template.bind({});
-_default.args = {
+export const Default = Template.bind({});
+Default.args = {
   modelValue: '',
-  placeholder: 'Placeholder text',
+  label: 'Label text',
+  placeholder: 'Placeholder',
 };
 
-export const disabled = Template.bind({});
-disabled.args = {
-  modelValue: '',
-  placeholder: 'Placeholder text',
+export const Disabled = Template.bind({});
+Disabled.args = {
+  ...Default.args,
   disabled: true,
 };

@@ -2,6 +2,7 @@
 .input-text
   label.input-text__label(v-if="props.label" :for="props.name" :class="[{'sr-only': props.labelHidden}]") {{ props.label }}
   input.input-text__field(type="text" :id="props.name" :name="props.name" :value="props.modelValue" :placeholder="props.placeholder" :autocomplete="autocompleteComp" :disabled="props.disabled" @input="onChangeInput")
+  p {{props.modelValue}}
 </template>
 
 <script setup lang="ts">
@@ -17,8 +18,8 @@ interface Props {
   autocomplete?: boolean;
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  label: undefined,
+const props: Readonly<Props> = withDefaults(defineProps<Props>(), {
+  label: 'Label text',
   name: '',
   modelValue: '',
   placeholder: undefined,
