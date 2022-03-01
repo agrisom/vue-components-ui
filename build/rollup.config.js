@@ -40,9 +40,10 @@ const baseConfig = {
         ],
       }),
     ],
-    replace: {
+    replace: ({
+      preventAssignment: true,
       'process.env.NODE_ENV': JSON.stringify('production'),
-    },
+    }),
     vue: {
       preprocessStyles: true,
     },

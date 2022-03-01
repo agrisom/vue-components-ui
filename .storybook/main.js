@@ -1,3 +1,4 @@
+var path = require('path');
 module.exports = {
   "stories": [
     "../src/lib-components/*.stories.mdx",
@@ -8,16 +9,12 @@ module.exports = {
     "@storybook/addon-essentials"
   ],
   webpackFinal: async (config, { configType }) => {
-    // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
-    // You can change the configuration based on that.
-    // 'PRODUCTION' is used when building the static version of storybook.
-
-    // Make whatever fine-grained changes you need
+    // Style loader
     config.module.rules.push({
-      test: /\.scss$/,
+      test: /\.s[ac]ss$/i,
       use: ['style-loader', 'css-loader', 'sass-loader'],
     });
-
+    // pug loader
     config.module.rules.push(
       {
         test: /\.pug$/,
@@ -26,8 +23,13 @@ module.exports = {
         ]
       }
     );
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "Shared": path.resolve(__dirname, "../src/shared"),
+      "@": path.resolve(__dirname, "../src"),
+    };
+    config.resolve.extensions.push(".ts", ".tsx");
 
-    // Return the altered config
     return config;
   },
   "framework": "@storybook/vue3"

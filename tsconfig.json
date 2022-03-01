@@ -20,9 +20,8 @@
             "vue"
         ],
         "paths": {
-            "@/*": [
-                "src/*"
-            ]
+            "@/*": ["src/*"],
+            "Shared/*": ["src/shared/*"],
         },
         "plugins": [
             {
