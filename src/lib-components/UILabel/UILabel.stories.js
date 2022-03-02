@@ -2,7 +2,7 @@ import { reactive } from 'vue';
 import UILabel from './UILabel.vue';
 
 export default {
-  title: 'Components/UILabel',
+  title: 'Components (test)/UILabel',
   component: UILabel,
 };
 

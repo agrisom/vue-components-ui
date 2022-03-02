@@ -6,7 +6,7 @@ svg.icon(:class="['icon--size-'+sizeC]")
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SizeX } from 'Shared/sizes';
+import type { SizeX } from 'Shared/sizes';
 
 interface Props {
   name: string,

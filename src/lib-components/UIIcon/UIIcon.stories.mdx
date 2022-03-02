@@ -1,0 +1,116 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/UIIcon/Get started"/>
+
+# How to use UIIcon
+
+UIIcon work with svg sprites. This file should be created and imported into your project. Follow this steps to create and load your icons to the project.
+
+## About SVG sprites
+
+SVG sprite is a unique file that groups all the svg images in your site. The sprite is loaded once in the document, instead of load each icon individually, and is used with the tags `<svg>` and `<use>`
+
+> Learn more about SVG sprites:
+- [fontawesome](https://fontawesome.com/v5/docs/web/advanced/svg-sprites)
+- [flaticon](https://www.flaticon.com/svg-sprites)
+- [Spa](https://www.mamutlove.com/blog/que-son-y-como-crear-y-utilizar-sprites-de-svg)
+
+## Get started
+
+### Get svg icons
+
+Copy all icons you want to use with UIIcon to your project `src/assets/icons`
+> You can create your own icons or get them from:
+- [Google Fonts](https://fonts.google.com/icons)
+- [Fontawesome](https://fontawesome.com/icons)
+- [Flaticon](https://www.flaticon.com/icons)
+
+### Create sprite-icons.svg
+
+You can use a script to build your SVGs into a sprite file. This is an example for the script **svg-icon-generator.js**
+```
+const fs = require('fs');
+const path = require('path');
+const { exec } = require('child_process');
+const filename = 'src/assets/sprite-icons.svg';
+
+exec('svg-sprite-generate -d ./src/assets/icons -o ./src/assets/sprite-icons.svg', (error, stdout, stderr) => {
+  if (error) {
+    console.log(`error: ${error.message}`);
+    return;
+  }
+  if (stderr) {
+    console.log(`stderr: ${stderr}`);
+    return;
+  }
+  console.log(`stdout: ${stdout}`);
+
+  fs.readFile(filename, 'utf8', function (err, data) {
+    if (err) {
+      // check and handle err
+    }
+    const idx = data.indexOf('\n');
+    let linesExceptFirst = data.substring(idx + 1);
+    fs.writeFileSync(filename, linesExceptFirst);
+
+    generateIconNameTypescriptDefinitions();
+  });
+});
+
+function generateIconNameTypescriptDefinitions() {
+
+  const iconsDir = path.resolve(__dirname, 'src/assets/icons');
+  const definitionsFile = path.resolve(__dirname, 'src/assets/Icon.type.ts');
+  const files = fs.readdirSync(iconsDir);
+  const iconNames = files.map(file => file.match(/^(.+)\.svg$/)[1]);
+
+  const typescriptDefinitions = `
+/*
+ * ARCHIVO AUTOGENERADO - NO EDITAR
+ * Generado por el comando 'npm run svg-icons'
+ */
+
+export const iconList = [
+  ${iconNames.map(name => `'${name}'`).join(',\n  ')},
+] as const;
+
+export type IconName = (typeof iconList)[number];
+`;
+
+  fs.writeFileSync(definitionsFile, typescriptDefinitions);
+
+}
+```
+Add this line to **package.json** to run the script
+```
+"scripts": {
+  ...
+  "svg-icons": "node svg-icon-generator.js"
+},
+```
+Update **sprite-icons.svg** when new icons are added or removed using npm command: `npm run svg-icons`
+
+### Insert sprite to the document
+- Using PUG
+```
+.svgsprites
+  include ./assets/sprite-icons.svg
+```
+- Using HTML
+```
+<template>
+<div class="svgsprites">
+  <iframe :src="sprite" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+</div>
+</template>
+
+<script setup lang="ts">
+import sprite from '@/assets/sprite-icons.svg';
+</script>
+```
+Styling:
+```
+.svgsprites{
+  display: none;
+}
+```

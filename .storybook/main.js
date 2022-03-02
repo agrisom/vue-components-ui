@@ -1,8 +1,8 @@
-var path = require('path');
+const path = require('path');
 module.exports = {
   "stories": [
     "../src/lib-components/*.stories.mdx",
-    "../src/lib-components/**/*.stories.@(js|jsx|ts|tsx)"
+    "../src/lib-components/**/*.stories.@(js|jsx|ts|tsx|mdx)"
   ],
   "addons": [
     "@storybook/addon-links",
@@ -13,22 +13,23 @@ module.exports = {
     config.module.rules.push({
       test: /\.s[ac]ss$/i,
       use: ['style-loader', 'css-loader', 'sass-loader'],
+      include: path.resolve(__dirname, '../src')
     });
     // pug loader
     config.module.rules.push(
       {
         test: /\.pug$/,
-        use: [
-          { loader: 'pug-plain-loader' }
-        ]
-      }
+        use: [{ loader: 'pug-plain-loader' }],
+        include: path.resolve(__dirname, '../src')
+      },
     );
+    config.resolve.extensions.push('.ts', '.tsx', '.js');
     config.resolve.alias = {
       ...config.resolve.alias,
-      "Shared": path.resolve(__dirname, "../src/shared"),
-      "@": path.resolve(__dirname, "../src"),
+      '@': path.resolve(__dirname, '../src'),
+      'Shared': path.resolve(__dirname, '../src/shared'),
     };
-    config.resolve.extensions.push(".ts", ".tsx");
+    config.resolve.modules.push(path.resolve(__dirname, "../src"));
 
     return config;
   },
