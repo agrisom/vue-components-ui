@@ -1,18 +1,40 @@
 {
   "name": "vue-components-ui",
-  "version": "0.1.0",
-  "description": "",
+  "version": "0.1.2",
+  "description": "Vue Component Framework",
+  "author": {
+    "name": "Albert Griso Mendez",
+    "email": "albert.griso.mendez@gmail.com"
+  },
+  "homepage": "https://vue-components-ui.netlify.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agrisom/vue-components-ui.git"
+  },
+  "keywords": [
+    "vue",
+    "vue components",
+    "vue framework",
+    "ui framework",
+    "ui library",
+    "components",
+    "component framework",
+    "component library"
+  ],
   "main": "dist/vue-components-ui.ssr.js",
   "browser": "dist/vue-components-ui.esm.js",
   "module": "dist/vue-components-ui.esm.js",
   "unpkg": "dist/vue-components-ui.min.js",
-  "types": "dist/types/src/entry.esm.d.ts",
+  "types": "dist/types/entry.esm.d.ts",
   "files": [
-    "dist/*",
-    "src/**/*.vue"
+    "dist/",
+    "src/"
   ],
   "sideEffects": [
-    "*.vue"
+    "*.vue",
+    "*.sass",
+    "*.scss",
+    "*.css"
   ],
   "scripts": {
     "serve": "start-storybook -p 6006",
