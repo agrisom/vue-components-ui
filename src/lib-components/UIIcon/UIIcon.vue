@@ -27,15 +27,12 @@ const heightC = computed(() => props.height ?? '24px');
 
 <style lang="scss">
 .icon {
-  --icon-gutter: var(--global-gutter, 0.25rem);
+  --icon-gutter: var(--ui-global-gutter, 0.25rem);
   color: currentColor;
   flex-shrink: 0;
   height: var(--icon-size, 24px);
   width: var(--icon-size, 24px);
   &--size {
-    &-xs {
-      --icon-size: calc(var(--icon-gutter) * 3);
-    }
     &-xs {
       --icon-size: calc(var(--icon-gutter) * 3);
     }
