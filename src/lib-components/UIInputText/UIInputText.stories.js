@@ -2,7 +2,7 @@ import { reactive } from 'vue';
 import UIInputText from './UIInputText.vue';
 
 export default {
-  title: 'Components (test)/Forms/UIInputText',
+  title: 'Components (DEV)/Forms/UIInputText',
   component: UIInputText,
   argTypes: {
     type: {
