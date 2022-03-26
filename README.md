@@ -14,7 +14,6 @@ This is a Vue component library that will contain all components you need to sta
 - [x] SFC Setup [vue-sfc-rollup](https://www.npmjs.com/package/vue-sfc-rollup)
 - [x] Vue Composition API [SFC script setup](https://vuejs.org/api/sfc-script-setup.html)
 - [x] Router [Vue router](https://router.vuejs.org/)
-- [x] Template [pug](https://pugjs.org/api/getting-started.html)
 - [x] Styling [SCSS](https://sass-lang.com/)
 - [x] Publish repository [npm](https://www.npmjs.com/package/vue-components-ui)
 - [x] Documentation [storybook](https://storybook.js.org/)
@@ -67,6 +66,11 @@ A version of storybook is publish via netlify. There you will found documentatio
 
 ## Changelog
 All notable changes to this project will be documented in this file.
+
+### [0.1.2] - 2022-03-26
+- Creates UIButton component
+- Complements storybook controls
+- Changed pug templates to html due to a bug that throws error when v-else
 
 ### [0.1.0] - 2022-03-02
 - Creates UIIcon component

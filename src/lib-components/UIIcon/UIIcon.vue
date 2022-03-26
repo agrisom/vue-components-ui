@@ -1,7 +1,8 @@
-<template lang="pug">
-svg.icon(:class="['icon--size-'+sizeC]")
-  desc {{ description ? description : name }}
-  use(:xlink:href="'#'+name")
+<template>
+<svg :class="['icon', 'icon--size-'+sizeC]">
+  <desc>{{ description ? description : name }}</desc>
+  <use :xlink:href="'#'+name" />
+</svg>
 </template>
 
 <script setup lang="ts">

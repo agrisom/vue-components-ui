@@ -1,7 +1,7 @@
-<template lang="pug">
-.input-text(:class="[{'input-text--block': props.block}]")
-  label.input-text__label(v-if="props.label" :for="props.name" :class="[{'sr-only': props.labelHidden || 'hidden' === props.type}]") {{ props.label + (required ? ' *' : '') }}
-  input.input-text__field(:type="props.type"
+<template>
+<div :class="['input-text', {'input-text--block': props.block}]">
+  <label v-if="props.label" :for="props.name" :class="['input-text__label', {'sr-only': props.labelHidden || 'hidden' === props.type}]">{{ props.label + (required ? ' *' : '') }}</label>
+  <input class="input-text__field" :type="props.type"
     :id="props.name"
     :name="props.name"
     :value="props.modelValue"
@@ -10,7 +10,8 @@
     :disabled="props.disabled"
     :required="props.required"
     :invalid="true"
-    @input="onChangeInput")
+    @input="onChangeInput" />
+</div>
 </template>
 
 <script setup lang="ts">

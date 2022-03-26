@@ -70,8 +70,6 @@
     "css-loader": "*",
     "minimist": "^1.2.5",
     "postcss": "^8.2.10",
-    "pug": "^3.0.2",
-    "pug-plain-loader": "^1.1.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.52.8",
     "rollup-plugin-postcss": "^4.0.0",

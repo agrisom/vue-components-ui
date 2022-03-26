@@ -1,9 +1,10 @@
-<template lang="pug">
-span.label {{ props.text }}
-p
-  b props.color: <br>
-  input(type="color" :value="props.color" @change="changeColor")
-  span.label {{ props.color }}
+<template>
+<span class="label">{{ props.text }}</span>
+<p>
+  <b>props.color:</b><br />
+  <input type="color" :value="props.color" @change="changeColor" />
+  <span class="label">{{ props.color }}</span>
+</p>
 </template>
 
 <script setup lang="ts">

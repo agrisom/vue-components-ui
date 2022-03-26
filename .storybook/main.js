@@ -15,14 +15,6 @@ module.exports = {
       use: ['style-loader', 'css-loader', 'sass-loader'],
       include: path.resolve(__dirname, '../src')
     });
-    // pug loader
-    config.module.rules.push(
-      {
-        test: /\.pug$/,
-        use: [{ loader: 'pug-plain-loader' }],
-        include: path.resolve(__dirname, '../src')
-      },
-    );
     config.resolve.extensions.push('.ts', '.tsx', '.js');
     config.resolve.alias = {
       ...config.resolve.alias,
