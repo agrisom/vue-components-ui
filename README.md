@@ -72,6 +72,8 @@ All notable changes to this project will be documented in this file.
 - Complements storybook controls
 - Changed pug templates to html due to a bug that throws error when v-else
 
+View github [changelog](https://github.com/agrisom/vue-components-ui/compare/V0.1.0...V0.1.2)
+
 ### [0.1.0] - 2022-03-02
 - Creates UIIcon component
 - Configures storybook
