@@ -71,6 +71,7 @@ All notable changes to this project will be documented in this file.
 - UIButton component released
 - Dev component UILabel deleted
 - Extends storybook controls
+View github [changelog](https://github.com/agrisom/vue-components-ui/compare/V0.1.2...V0.1.3)
 
 ### [0.1.2] - 2022-03-26
 - Creates UIButton component
