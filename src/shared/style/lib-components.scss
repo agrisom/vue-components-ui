@@ -1,0 +1,32 @@
+@use "sass:map";
+@use "sass:list";
+
+$color-list: "grey", "primary", "secondary", "success", "warning", "error";
+$lightness: ( 1: 35%, 2: 25%, 3: 10%, 4: 0%, 5: -5%, 6: -10%, 7: -15%, 8: -25%, 9: -35% );
+
+@mixin colors {
+  @each $color in $color-list {
+    --ui-global-color-#{$color}--000: hsl(var(--ui-global-color-#{$color}) 95%);
+    @for $var from 1 through 9 {
+      --ui-global-color-#{$color}--#{$var}00: hsl(var(--ui-global-color-#{$color}) calc(var(--ui-global-color-#{$color}-lightness, 0) + #{map.get($lightness, $var)}));
+    }
+  }
+}
+
+:root {
+  --ui-global-gutter: 0.25rem;
+  --ui-global-color-black: hsl(0, 0%, 15%);
+  --ui-global-color-grey: 0 0%;
+  --ui-global-color-primary: 224 52%;
+  --ui-global-color-secondary: 0 58%;
+  --ui-global-color-success: 125 40%;
+  --ui-global-color-warning: 28 100%;
+  --ui-global-color-error: 0 90%;
+  --ui-global-color-grey-lightness: 50%;
+  --ui-global-color-primary-lightness: 56%;
+  --ui-global-color-secondary-lightness: 46%;
+  --ui-global-color-success-lightness: 50%;
+  --ui-global-color-warning-lightness: 50%;
+  --ui-global-color-error-lightness: 45%;
+  @include colors;
+}

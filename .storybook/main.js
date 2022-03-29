@@ -19,7 +19,6 @@ module.exports = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@': path.resolve(__dirname, '../src'),
-      'Shared': path.resolve(__dirname, '../src/shared'),
     };
     config.resolve.modules.push(path.resolve(__dirname, "../src"));
 

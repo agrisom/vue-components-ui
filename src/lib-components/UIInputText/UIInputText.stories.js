@@ -1,5 +1,6 @@
 import { reactive } from 'vue';
 import UIInputText from './UIInputText.vue';
+import '@/shared/style/lib-components.scss';
 
 export default {
   title: 'Components (DEV)/Forms/UIInputText',
@@ -66,7 +67,7 @@ export default {
       description: 'Makes the field fill all available horizontal space'
     }
   },
-  parameters: { controls: { sort: 'requiredFirst', expanded: true } },
+  parameters: { controls: { expanded: true } },
 };
 
 const Template = (args) => ({

@@ -1,13 +1,13 @@
 <template>
 <svg :class="['icon', 'icon--size-'+sizeC]">
   <desc>{{ description ? description : name }}</desc>
-  <use :xlink:href="'#'+name" />
+  <use :href="'#'+name" />
 </svg>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { SizeX } from 'Shared/sizes';
+import type { SizeX } from '@/shared/types/sizes';
 
 interface Props {
   name: string,
