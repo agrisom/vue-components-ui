@@ -21,18 +21,18 @@ export default {
       description: 'Provides an accessible, long-text description of the SVG. The attribute <code>desc</code> will be the same as name if not defined',
     },
     size: {
-      description: 'The  displayed width/height predefined for the rectangular viewport',
+      description: 'The displayed width/height predefined for the rectangular viewport',
       options: listSizeX,
       table: {
         type: {
           summary: 'SizeX',
-          detail: '\'xs\' => (0.75 rem) | \'sm\' => (1 rem) | \'md\' => (1.5 rem) | \'lg\' => (2.25 rem) | \'xl\' => (3 rem)',
+          detail: '"xs" => (0.75 rem) | "sm" => (1 rem) | "md" => (1.5 rem) | "lg" => (2.25 rem) | "xl" => (3 rem)',
         },
       },
       control: { type: 'select' },
     },
     width: {
-      description: 'The  displayed width of the rectangular viewport',
+      description: 'The displayed width of the rectangular viewport',
       table: {
         type: {
           summary: 'length | percentage',
@@ -41,7 +41,7 @@ export default {
       },
     },
     height: {
-      description: 'The  displayed height of the rectangular viewport',
+      description: 'The displayed height of the rectangular viewport',
       table: {
         type: {
           summary: 'length | percentage',

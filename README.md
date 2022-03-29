@@ -67,6 +67,11 @@ A version of storybook is publish via netlify. There you will found documentatio
 ## Changelog
 All notable changes to this project will be documented in this file.
 
+### [0.1.3] - 2022-03-29
+- UIButton component released
+- Dev component UILabel deleted
+- Extends storybook controls
+
 ### [0.1.2] - 2022-03-26
 - Creates UIButton component
 - Complements storybook controls

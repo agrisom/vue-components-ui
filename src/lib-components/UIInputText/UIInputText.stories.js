@@ -12,7 +12,7 @@ export default {
       table: {
         type: {
           summary: 'UIInputTextType',
-          detail: '\'search\' | \'text\' | \'password\' | \'email\' | \'url\' | \'tel\' | \'color\' | \'hidden\''
+          detail: '"search" | "text" | "password" | "email" | "url" | "tel" | "color" | "hidden"'
         },
       },
       control: { type: 'select' },
@@ -38,7 +38,7 @@ export default {
       table: {
         type: {
           summary: 'UIInputTextAutocomplete',
-          detail: '\'on\' | \'off\' | string'
+          detail: '"on" | "off" | string'
         },
       },
       control: { type: 'text' },
@@ -49,7 +49,7 @@ export default {
       table: {
         type: {
           summary: 'UIInputTextEnterKeyHint',
-          detail: 'undefined, \'enter\', \'done\', \'go\', \'next\', \'previous\', \'search\', \'send\''
+          detail: 'undefined, "enter", "done", "go", "next", "previous", "search", "send"'
         },
       },
       control: { type: 'select' },
