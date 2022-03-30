@@ -1,32 +1,38 @@
 @use "sass:map";
 @use "sass:list";
 
-$color-list: "grey", "primary", "secondary", "success", "warning", "error";
-$lightness: ( 1: 35%, 2: 25%, 3: 10%, 4: 0%, 5: -5%, 6: -10%, 7: -15%, 8: -25%, 9: -35% );
+$lightness-variation: ( 1: 35%, 2: 25%, 3: 10%, 4: 0%, 5: -5%, 6: -10%, 7: -15%, 8: -25%, 9: -35% );
 
-@mixin colors {
-  @each $color in $color-list {
-    --ui-global-color-#{$color}--000: hsl(var(--ui-global-color-#{$color}) 95%);
+$palette: (
+  "grey": ( "h": 0, "s": 0%, "l": 50% ),
+  "primary": ( "h": 224, "s": 52%, "l": 56% ),
+  "secondary": ( "h": 0, "s": 58%, "l": 46% ),
+  "success": ( "h": 125, "s": 40%, "l": 50% ),
+  "warning": ( "h": 28, "s": 100%, "l": 50% ),
+  "error": ( "h": 0, "s": 90%, "l": 45% ),
+);
+
+@mixin build-colors {
+  @each $color-name, $color-value in $palette {
+    --ui-global-color-#{$color-name}--000: hsl(#{map.get($color-value, "h")} #{map.get($color-value, "s")} 95%);
     @for $var from 1 through 9 {
-      --ui-global-color-#{$color}--#{$var}00: hsl(var(--ui-global-color-#{$color}) calc(var(--ui-global-color-#{$color}-lightness, 0) + #{map.get($lightness, $var)}));
+      $lightness: calc(#{map.get($color-value, "l")} + #{map.get($lightness-variation, $var)});
+      --ui-global-color-#{$color-name}--#{$var}00: hsl(#{map.get($color-value, "h")} #{map.get($color-value, "s")} #{$lightness});
     }
+  }
+}
+
+@function color-transparency($color-name, $alpha: 0.5) {
+  $color-value: map.get($palette, $color-name);
+  @if $color-value {
+    @return hsla(map.get($color-value, "h"), map.get($color-value, "s"), map.get($color-value, "l"), $alpha);
+  } @else {
+    @return hsla(0, 0%, 0%, $alpha);
   }
 }
 
 :root {
   --ui-global-gutter: 0.25rem;
   --ui-global-color-black: hsl(0, 0%, 15%);
-  --ui-global-color-grey: 0 0%;
-  --ui-global-color-primary: 224 52%;
-  --ui-global-color-secondary: 0 58%;
-  --ui-global-color-success: 125 40%;
-  --ui-global-color-warning: 28 100%;
-  --ui-global-color-error: 0 90%;
-  --ui-global-color-grey-lightness: 50%;
-  --ui-global-color-primary-lightness: 56%;
-  --ui-global-color-secondary-lightness: 46%;
-  --ui-global-color-success-lightness: 50%;
-  --ui-global-color-warning-lightness: 50%;
-  --ui-global-color-error-lightness: 45%;
-  @include colors;
+  @include build-colors;
 }
