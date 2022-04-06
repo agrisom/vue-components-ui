@@ -13,11 +13,20 @@ module.exports = {
     "builder": "@storybook/builder-vite"
   },
   async viteFinal(config, { configType }) {
-    config.resolve.extensions = ['.mjs', '.mdx', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue', '.sass'];
-    config.resolve.alias = {
-      '@': resolve(__dirname, '../src'),
-      vue: "vue/dist/vue.esm-bundler.js",
+    return {
+      ...config,
+      css: {
+        preprocessorOptions: {
+          scss: { additionalData: `@import \'@/shared/style/lib-components.scss\';` },
+        },
+      },
+      resolve: {
+        extensions: ['.mjs', '.mdx', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue', '.scss', '.sass'],
+        alias: {
+          '@': resolve(__dirname, '../src'),
+          vue: "vue/dist/vue.esm-bundler.js",
+        }
+      }
     };
-    return config;
   },
 }

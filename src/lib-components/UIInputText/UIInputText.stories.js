@@ -1,6 +1,5 @@
 import { reactive } from 'vue';
 import UIInputText from './UIInputText.vue';
-import '@/shared/style/lib-components.scss';
 
 export default {
   title: 'Components (DEV)/Forms/UIInputText',

@@ -3,7 +3,6 @@ import { listSize, listSizeX } from '@/shared/types/sizes';
 import { iconList } from '@/lib-components/UIIcon/mockup/Icon.type';
 import sprite from '@/lib-components/UIIcon/mockup/sprite-icons.svg';
 import vueRouter from 'storybook-vue3-router';
-import '@/shared/style/lib-components.scss';
 
 export default {
   title: 'Components/UIButton',

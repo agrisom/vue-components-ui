@@ -2,7 +2,6 @@ import UIIcon from './UIIcon.vue';
 import { listSizeX } from '@/shared/types/sizes';
 import { iconList } from './mockup/Icon.type';
 import sprite from './mockup/sprite-icons.svg';
-import '@/shared/style/lib-components.scss';
 
 export default {
   title: 'Components/UIIcon',
