@@ -122,6 +122,14 @@ A version of storybook is publish via netlify. There you will found documentatio
 ## Changelog
 All notable changes to this project will be documented in this file.
 
+### [0.1.4] - 2022-04-06
+- Upgraded all package.json dependencies
+- Upgraded storybook to 6.4.20
+- Storybook builder changed to vite
+- Storybook loads lib-components.scss by default
+- Simplifies color palette definition
+View github [changelog](https://github.com/agrisom/vue-components-ui/compare/V0.1.3...V0.1.4)
+
 ### [0.1.3] - 2022-03-29
 - UIButton component released
 - Dev component UILabel deleted
