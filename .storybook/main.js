@@ -1,4 +1,4 @@
-const path = require('path');
+const {resolve} = require("path");
 module.exports = {
   "stories": [
     "../src/lib-components/*.stories.mdx",
@@ -8,21 +8,16 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials"
   ],
-  webpackFinal: async (config, { configType }) => {
-    // Style loader
-    config.module.rules.push({
-      test: /\.s[ac]ss$/i,
-      use: ['style-loader', 'css-loader', 'sass-loader'],
-      include: path.resolve(__dirname, '../src')
-    });
-    config.resolve.extensions.push('.ts', '.tsx', '.js');
+  "framework": "@storybook/vue3",
+  "core": {
+    "builder": "@storybook/builder-vite"
+  },
+  async viteFinal(config, { configType }) {
+    config.resolve.extensions = ['.mjs', '.mdx', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue', '.sass'];
     config.resolve.alias = {
-      ...config.resolve.alias,
-      '@': path.resolve(__dirname, '../src'),
+      '@': resolve(__dirname, '../src'),
+      vue: "vue/dist/vue.esm-bundler.js",
     };
-    config.resolve.modules.push(path.resolve(__dirname, "../src"));
-
     return config;
   },
-  "framework": "@storybook/vue3"
 }

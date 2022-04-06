@@ -2,6 +2,7 @@ import UIButton from './UIButton.vue';
 import { listSize, listSizeX } from '@/shared/types/sizes';
 import { iconList } from '@/lib-components/UIIcon/mockup/Icon.type';
 import sprite from '@/lib-components/UIIcon/mockup/sprite-icons.svg';
+import vueRouter from 'storybook-vue3-router';
 import '@/shared/style/lib-components.scss';
 
 export default {
@@ -53,6 +54,7 @@ export default {
     color: {
       description: 'Predefined color wich the button will be displayed',
       options: ['default', 'primary', 'secondary', 'success', 'warning', 'error'],
+      type: { name: 'string', required: false },
       table: {
         type: {
           summary: 'ButtonColor',
@@ -118,6 +120,7 @@ export default {
     },
   },
   parameters: { controls: { expanded: true } },
+  decorators: [ vueRouter() ],
 };
 
 const Template = (args) => ({

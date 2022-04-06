@@ -2,7 +2,7 @@
 
 # Welcome to Vue Components UI
 
-This is a Vue component library that will contain all components you need to start a new Vue project. Components are written with Vue 3, TS, HTML, SCSS and fully configurable using props, slots, and css variables.
+This is a Vue component library that will contain all components you need to start a new Vue project. Components are written with Vue 3, TS, Pug, SCSS and fully configurable using props, slots, and css variables.
 
 > This library is currently under construction. I'll be publishing new components as son as they are ready for use
 
