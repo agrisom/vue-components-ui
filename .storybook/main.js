@@ -1,32 +1,50 @@
-const {resolve} = require("path");
-module.exports = {
+const { resolve } = require('path');
+
+module.exports = {  
+  webpackFinal: async (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, "src"),
+    };
+    config.module.rules.push({
+      test: /\.scss$/,
+      use: [
+        'style-loader',
+        'css-loader',
+        {
+          loader: "sass-loader",
+          options: {
+            additionalData: (content) => {
+              const LF = '\n';
+              const paths = [
+                '@use \'sass:math\';',
+                '@use \'@/shared/style/style.scss\';',
+              ];
+              return paths.join(LF) + LF + content;
+            },
+            implementation: require('sass'),
+          },
+        },
+      ],
+      include: resolve(__dirname, '../'),
+    });
+    return config;
+  },
   "stories": [
-    "../src/lib-components/*.stories.mdx",
-    "../src/lib-components/**/*.stories.@(js|jsx|ts|tsx|mdx)"
+    "../src/docs/*.mdx",
+    "../src/components/**/*.stories.@(js|jsx|ts|tsx)"
   ],
   "addons": [
     "@storybook/addon-links",
-    "@storybook/addon-essentials"
+    "@storybook/addon-essentials",
+    "@storybook/addon-interactions",
+    "storybook-addon-sass-postcss"
   ],
-  "framework": "@storybook/vue3",
-  "core": {
-    "builder": "@storybook/builder-vite"
+  "framework": {
+    "name": "@storybook/vue3-vite",
+    "options": {}
   },
-  async viteFinal(config, { configType }) {
-    return {
-      ...config,
-      css: {
-        preprocessorOptions: {
-          scss: { additionalData: `@import \'@/shared/style/lib-components.scss\';` },
-        },
-      },
-      resolve: {
-        extensions: ['.mjs', '.mdx', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue', '.scss', '.sass'],
-        alias: {
-          '@': resolve(__dirname, '../src'),
-          vue: "vue/dist/vue.esm-bundler.js",
-        }
-      }
-    };
-  },
+  "docs": {
+    "autodocs": "tag"
+  }
 }

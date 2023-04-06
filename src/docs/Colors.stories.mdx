@@ -1,0 +1,108 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs';
+
+<Meta title="Docs/Colors" />
+
+# 🌈 Colors
+
+<div 
+  style={{
+    fontSize: '1.6rem',
+    maxWidth: '40ch',
+    lineHeight: '1.4',
+    marginBottom: '2.5em',
+    marginTop: '1em',
+    hyphens: 'none',
+  }}
+>
+This design system colors are intended to clearly communicate actions,
+states and navigation within the user interface. Its goal is to make
+easy to comprehend each of the elements of the composition.
+
+Colors are created using css variables to make it easy for the developers
+to personalize designs on the client requirements.
+</div>
+
+## Color palette
+
+<ColorPalette>
+  <ColorItem 
+    title="White" 
+    subtitle="--ui-color-wite" 
+    colors={{ wite: 'hsl(0 0% 100%)' }} 
+  />
+  <ColorItem 
+    title="Black" 
+    subtitle="--ui-color-black" 
+    colors={{ black: 'hsl(0 0% 15%)' }} 
+  />
+  <ColorItem
+    title="Gray Scale"
+    subtitle="--ui-color-gray--*"
+    colors={{ 
+      "10": 'hsl(0 0% calc(50% + 45%))',
+      "20": 'hsl(0 0% calc(50% + 30%))',
+      "30": 'hsl(0 0% calc(50% + 20%))',
+      "40": 'hsl(0 0% calc(50% + 5%))',
+      "50": 'hsl(0 0% 50%)',
+      "60": 'hsl(0 0% calc(50% - 5%))',
+      "70": 'hsl(0 0% calc(50% - 15%))',
+      "80": 'hsl(0 0% calc(50% - 20%))',
+      "90": 'hsl(0 0% calc(50% - 35%))',
+    }}
+  />
+  <ColorItem
+    title="Primary"
+    subtitle="--ui-color-primary--*"
+    colors={{ 
+      "10": 'hsl(224 52% calc(56% + 45%))',
+      "20": 'hsl(224 52% calc(56% + 30%))',
+      "30": 'hsl(224 52% 56%)',
+      "40": 'hsl(224 52% calc(56% - 15%))',
+      "50": 'hsl(224 52% calc(56% - 35%))',
+    }}
+  />
+  <ColorItem
+    title="Secondary"
+    subtitle="--ui-color-secondary--*"
+    colors={{ 
+      "10": 'hsl(174 37% calc(46%  + 45%))',
+      "20": 'hsl(174 37% calc(46%  + 30%))',
+      "30": 'hsl(174 37% 46%)',
+      "40": 'hsl(174 37% calc(46%  - 15%))',
+      "50": 'hsl(174 37% calc(46%  - 35%))',
+    }}
+  />
+  <ColorItem
+    title="Success"
+    subtitle="--ui-color-success--*"
+    colors={{ 
+      "10": 'hsl(125 40% calc(50%  + 45%))',
+      "20": 'hsl(125 40% calc(50%  + 30%))',
+      "30": 'hsl(125 40% 50%)',
+      "40": 'hsl(125 40% calc(50%  - 15%))',
+      "50": 'hsl(125 40% calc(50%  - 35%))',
+    }}
+  />
+  <ColorItem
+    title="Warning"
+    subtitle="--ui-color-warning--*"
+    colors={{ 
+      "10": 'hsl(28 100% calc(50%  + 45%))',
+      "20": 'hsl(28 100% calc(50%  + 30%))',
+      "30": 'hsl(28 100% 50%)',
+      "40": 'hsl(28 100% calc(50%  - 15%))',
+      "50": 'hsl(28 100% calc(50%  - 35%))',
+    }}
+  />
+  <ColorItem
+    title="Error"
+    subtitle="--ui-color-error--*"
+    colors={{ 
+      "10": 'hsl(0 90% calc(45%  + 45%))',
+      "20": 'hsl(0 90% calc(45%  + 30%))',
+      "30": 'hsl(0 90% 45%)',
+      "40": 'hsl(0 90% calc(45%  - 15%))',
+      "50": 'hsl(0 90% calc(45%  - 35%))',
+    }}
+  />
+</ColorPalette>

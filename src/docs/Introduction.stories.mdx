@@ -1,0 +1,80 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introducción" />
+
+<a href="https://github.com/agrisom" target="_blank">
+  <img src="/agrisom-logo-min.svg" alt="agrisom" style={{height: 40 + 'vh'}} />
+</a>
+
+# Welcome to Vue Components UI
+
+This is a Vue component library that will contain all components you need to start a new Vue project. Components are written with Vue 3, TS, HTML, SCSS and fully configurable using props, slots, and css variables. This library is based on my public project [Vue library demo](https://github.com/agrisom/agrisom-vue-component-library-demo)
+
+> This library is currently under construction. I'll be publishing new components as son as they are ready for use
+
+## How it works
+
+- [x] Build tool [Vite](https://vitejs.dev/)
+- [x] Framework [Vue 3](https://vuejs.org/)
+- [x] Type system [TypeScript](https://www.typescriptlang.org/) / [Vue tsc](https://github.com/vuejs/language-tools)
+- [x] Build plugin [typescript2](https://github.com/ezolenko/rollup-plugin-typescript2)
+- [x] Vue script setup [SFC](https://vuejs.org/api/sfc-script-setup.html)
+- [x] Router [Vue router](https://router.vuejs.org/)
+- [x] Styling [SCSS](https://sass-lang.com/)
+- [x] Publish repository [npm](https://www.npmjs.com/package/vue-components-ui)
+- [x] Documentation [storybook](https://storybook.js.org/)
+
+## Collaborators
+
+[![agrisom](https://s.gravatar.com/avatar/fca9ce1022597e46e338155fbee56a4d?s=80 "agrisom")](https://github.com/agrisom)
+
+## Installation
+
+**Using npm**
+
+`npm install --save-dev vue-components-ui`
+
+**Import an especific version**
+
+`npm install --save-dev vue-components-ui#0.2.1`
+
+## Import styles
+
+We must import the css file on the main file where the Vue app is created.
+
+**app.ts**
+
+```
+import 'vue-components-ui/style.css';
+```
+
+## Usage
+
+Once installed we can use the library.
+For this we import them individally on demand so the components are loaded to the browser as son as they are used for the firs time and allows Vue and vite to exclude unused components from the final compilation.
+
+### Usage example
+
+**Page.vue**
+
+```
+<script setup lang="ts">
+import { MyComponent } from 'vue-components-ui';
+</script>
+
+<template>
+  <MyComponent text="My Header" color="green"/>
+</template>
+```
+
+## Repository
+
+Check out the code on github, [agrisom/vue-components-ui](https://github.com/agrisom/vue-components-ui)
+
+## Documentation
+
+All components are testable and documented with storybook.
+
+A version of storybook is publish via netlify. There you will found documentation for every component along with a playground and testing tools
+
+[documentation](https://vue-components-ui.netlify.app)

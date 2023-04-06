@@ -1,0 +1,82 @@
+@use './../utils/functions';
+@use './../utils/variables';
+
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 400;
+  src: url('@/assets/fonts/Roboto/Roboto-Regular.ttf') format("truetype");
+}
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 500;
+  src: url('@/assets/fonts/Roboto/Roboto-Medium.ttf') format("truetype");
+}
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 600;
+  src: url('@/assets/fonts/Roboto/Roboto-Bold.ttf') format("truetype");
+}
+
+html,body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: var(--ui-font-color-main);
+}
+
+button, input, select, textarea, pre {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: var(--ui-color-secondary--50);
+}
+h1 {
+  @include functions.heading--h1;
+}
+h2 {
+  @include functions.heading--h2;
+}
+h3 {
+  @include functions.heading--h3;
+}
+h4 {
+  @include functions.heading--h4;
+}
+h5 {
+  @include functions.heading--h5;
+}
+h6 {
+  @include functions.heading--h6;
+}
+
+p {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+#app {
+  height: 100%;
+}
+
+* {
+  @include functions.minimal-scrollbar;
+}
+
+pre {
+  --pre-color: var(--ui-font-color-invert);
+  --pre-bg-color: var(--ui-color--grey-60);
+  color: var(--pre-color);
+  background-color: var(--pre-bg-color);
+  padding: variables.$gutter * 2;
+  white-space: pre;
+  overflow: auto;
+}
