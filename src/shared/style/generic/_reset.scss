@@ -23,7 +23,6 @@ html,body {
   height: 100%;
   width: 100%;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 body {
@@ -69,14 +68,4 @@ p {
 
 * {
   @include functions.minimal-scrollbar;
-}
-
-pre {
-  --pre-color: var(--ui-font-color-invert);
-  --pre-bg-color: var(--ui-color--grey-60);
-  color: var(--pre-color);
-  background-color: var(--pre-bg-color);
-  padding: variables.$gutter * 2;
-  white-space: pre;
-  overflow: auto;
 }
