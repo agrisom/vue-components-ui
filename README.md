@@ -2,7 +2,7 @@
 
 # Welcome to Vue Components UI
 
-This is a Vue component library that will contain all components you need to start a new Vue project. Components are written with Vue 3, TS, HTML, SCSS and fully configurable using props, slots, and css variables. This library is based on my public project [Vue library demo](https://github.com/agrisom/agrisom-vue-component-library-demo)
+This is a Vue component library that will contain all components you need to start a new Vue project. Components are written with Vue 3 (Script setup), Rollup, TS, HTML, SCSS and fully configurable using props, slots, and css variables. This library is based on my public project [Vue library demo](https://github.com/agrisom/agrisom-vue-component-library-demo)
 
 > This library is currently under construction. I'll be publishing new components as son as they are ready for use
 
@@ -77,7 +77,7 @@ A version of storybook is publish via netlify. There you will found documentatio
 
 All notable changes to this project will be documented in this file.
 
-### [0.2.0] - 2023-04-10
+### [0.2.0] - 2023-05-08
 - This project is reset from the roots to provide better tools and base to allow grow the project.
 If you are currently using this repo in your project I recomend you to lock the versión to [0.1.4](https://www.npmjs.com/package/vue-components-ui/v/0.1.4) and open a new task to test and migrate to this new version.
 View github [changelog](https://github.com/agrisom/vue-components-ui/compare/V0.1.4...V0.2.0)
