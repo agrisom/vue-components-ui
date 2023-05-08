@@ -1,0 +1,70 @@
+@use './functions';
+
+.heading--h1 {
+  @include functions.heading--h1;
+}
+.heading--h2 {
+  @include functions.heading--h2;
+}
+.heading--h3 {
+  @include functions.heading--h3;
+}
+.heading--h4 {
+  @include functions.heading--h4;
+}
+.heading--h5 {
+  @include functions.heading--h5;
+}
+.heading--h6 {
+  @include functions.heading--h6;
+}
+
+.text--lg {
+  @include functions.text--lg;
+}
+.text--md {
+  @include functions.text--md;
+}
+.text--sm {
+  @include functions.text--sm;
+}
+.text--xs {
+  @include functions.text--xs;
+}
+
+.caption {
+  color: var(--ui-color-secondary--30);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.subtitle {
+  @include functions.text--sm;
+  color: var(--ui-color-secondary--30);
+  font-weight: 600;
+}
+
+@mixin line-clamp {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+
+.line-clamp--1 {
+  @include line-clamp;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp--2 {
+  @include line-clamp;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp--3 {
+  @include line-clamp;
+  -webkit-line-clamp: 3;
+}
+
+.line-clamp--5 {
+  @include line-clamp;
+  -webkit-line-clamp: 5;
+}

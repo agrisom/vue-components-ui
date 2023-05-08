@@ -1,0 +1,48 @@
+@use "sass:map";
+@use "sass:list";
+
+$grey-lightness-variation: ( 1: 45%, 2: 30%, 3: 20%, 4: 5%, 5: 0%, 6: -5%, 7: -15%, 8: -20%, 9: -35% );
+$color-lightness-variation: ( 1: 45%, 2: 30%, 3: 0%, 4: -15%, 5: -35% );
+
+$palette: (
+  "grey": ( "h": 0, "s": 0%, "l": 50% ),
+  "primary": ( "h": 224, "s": 52%, "l": 56% ),
+  "secondary": ( "h": 0, "s": 58%, "l": 46% ),
+  "success": ( "h": 125, "s": 40%, "l": 50% ),
+  "warning": ( "h": 28, "s": 100%, "l": 50% ),
+  "error": ( "h": 0, "s": 90%, "l": 45% ),
+);
+
+@mixin build-colors {
+  @each $color-name, $color-value in $palette {
+    @if $color-name == 'grey' {
+      @for $var from 1 through 9 {
+        $lightness: calc(#{map.get($color-value, "l")} + #{map.get($grey-lightness-variation, $var)});
+        --ui-color-#{$color-name}--#{$var}0: hsl(#{map.get($color-value, "h")} #{map.get($color-value, "s")} #{$lightness});
+      }
+    } @else {
+      @for $var from 1 through 5 {
+        $lightness: calc(#{map.get($color-value, "l")} + #{map.get($color-lightness-variation, $var)});
+        --ui-color-#{$color-name}--#{$var}0: hsl(#{map.get($color-value, "h")} #{map.get($color-value, "s")} #{$lightness});
+      }
+    }
+  }
+}
+
+@function color-transparency($color-name, $alpha: 0.5) {
+  $color-value: map.get($palette, $color-name);
+  @if $color-value {
+    @return hsla(map.get($color-value, "h"), map.get($color-value, "s"), map.get($color-value, "l"), $alpha);
+  } @else {
+    @return hsla(0, 0%, 0%, $alpha);
+  }
+}
+
+:root {
+  --ui-gutter: 0.25rem;
+  --ui-background-color: var(--ui-color-white);
+  --ui-font-color-main: var(--ui-color-black);
+  --ui-color-white: hsl(0, 0%, 100%);
+  --ui-color-black: hsl(0, 0%, 15%);
+  @include build-colors;
+}
