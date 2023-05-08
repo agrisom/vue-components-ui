@@ -113,8 +113,8 @@ function generateIconNameTypescriptDefinitions() {
  * Reload this file running this command 'npm run svg-sprite' or 'npm run build'
  */
 
-export const iconList = [${iconNames.map(name => `'${name}'`).join(', ')}] as const;
-export type Icon = typeof iconList[number];
+export const listIcon = [${iconNames.map(name => `'${name}'`).join(', ')}] as const;
+export type Icon = typeof listIcon[number];
 `;
 
   fs.writeFileSync(definitionsFile, typescriptDefinitions);

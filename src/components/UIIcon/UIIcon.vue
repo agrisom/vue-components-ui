@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { iconList } from '@/shared/types/icon.type';
+import { listIcon } from '@/shared/types/icon.type';
 import type { Icon } from '@/shared/types/icon.type';
 import type { SizeX } from '@/shared/types/size.type';
 
@@ -9,29 +9,26 @@ export interface Props {
   size?: SizeX;
 }
 const props: Readonly<Props> = withDefaults(defineProps<Props>(), {
-  name: iconList[0],
+  name: listIcon[0],
   size: 'md',
 });
 </script>
   
 <template>
-  <div class="icon__container">
-    <svg :class="['icon', 'icon--size-' + props.size]">
-      <desc>{{ props.description ? props.description : props.name }}</desc>
-      <use :href="`#${props.name}`" />
-    </svg>
-  </div>
+  <svg :class="['icon', 'icon--size-' + props.size]">
+    <desc>{{ props.description ? props.description : props.name }}</desc>
+    <use :href="`#${props.name}`" />
+  </svg>
 </template>
 
 <style lang="scss">
 .icon {
-  color: currentColor;
   flex-shrink: 0;
   height: var(--icon-size, 24px);
   width: var(--icon-size, 24px);
 
-  &__container {
-    display: contents;
+  use {
+    color: currentColor;
   }
 
   &--size {

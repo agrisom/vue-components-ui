@@ -1,9 +1,8 @@
-import UIIcon from './UIIcon.vue';
-import { iconList } from '@/shared/types/icon.type';
-import { listSizeX } from '@/shared/types/size.type';
-import sprite from '/sprite.svg';
-
 import type { ArgTypes, Meta, StoryObj } from '@storybook/vue3';
+import { UIIcon } from '@/LibraryDeclaration';
+
+import { listIcon } from '@/shared/types/icon.type';
+import { listSizeX } from '@/shared/types/size.type';
 
 const meta = {
   title: 'Componentes/UIIcon',
@@ -12,7 +11,7 @@ const meta = {
   argTypes: {
     name: {
       description: 'The #id to the icon from your <code>sprite-icons.svg</code> that needs to be duplicated',
-      options: iconList,
+      options: listIcon,
       table: {
         type: { summary: 'Icon | string' },
       },
@@ -41,19 +40,6 @@ const meta = {
     },
   } as ArgTypes,
   args: { name: 'home', description: 'Accessible long-text description of the SVG', size: 'md' },
-  render: (args, { argTypes }) => ({
-    components: { UIIcon },
-    setup() {
-      return { args, sprite };
-    },
-    props: Object.keys(argTypes),
-    template: `
-      <div class="svgsprites" style="display: none">
-        <iframe :src="sprite" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-      </div>
-      <UIIcon v-bind="args" />
-    `,
-  }),
 } satisfies Meta<typeof UIIcon>;
 
 export default meta;
