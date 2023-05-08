@@ -1,30 +1,18 @@
-import type { ArgTypes, Meta, StoryObj } from '@storybook/vue3';
-import { UIIcon } from '@/LibraryDeclaration';
-
-import { listIcon } from '@/shared/types/icon.type';
+import UILoader from './UILoader.vue';
 import { listSizeX } from '@/shared/types/size.type';
 
+import type { ArgTypes, Meta, StoryObj } from '@storybook/vue3';
+
 const meta = {
-  title: 'Components/UIIcon',
-  component: UIIcon,
+  title: 'Components/UILoader',
+  component: UILoader,
   tags: ['autodocs'],
   argTypes: {
-    name: {
-      description: 'The #id to the icon from your <code>sprite-icons.svg</code> that needs to be duplicated',
-      options: listIcon,
-      table: {
-        type: { summary: 'Icon | string' },
-      },
-      control: { type: 'select' },
-    },
-    description: {
-      description: 'Provides an accessible, long-text description of the SVG. The attribute <code>desc</code> will be the same as name if not defined',
-      table: {
-        type: {
-          summary: 'string',
-        },
-      },
-      control: { type: 'text' },
+    block: {
+      description: 'display: inline-flex',
+      defaultValue: { summary: 'true' },
+      table: { type: { summary: 'boolean' } },
+      control: { type: 'boolean' },
     },
     size: {
       description: 'The displayed width/height predefined for the rectangular viewport',
@@ -39,8 +27,8 @@ const meta = {
       control: { type: 'select' },
     },
   } as ArgTypes,
-  args: { name: 'home', description: 'Accessible long-text description of the SVG', size: 'md' },
-} satisfies Meta<typeof UIIcon>;
+  args: { size: 'md' },
+} satisfies Meta<typeof UILoader>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -74,6 +62,12 @@ export const SizeLg: Story = {
 export const SizeXl: Story = {
   args: {
     size: 'xl',
+  },
+};
+
+export const Block: Story = {
+  args: {
+    block: true,
   },
 };
 
