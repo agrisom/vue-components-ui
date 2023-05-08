@@ -40,6 +40,8 @@ $palette: (
 
 :root {
   --ui-gutter: 0.25rem;
+  --ui-background-color: var(--ui-color-wite);
+  --ui-font-color-main: var(--ui-color-black);
   --ui-color-white: hsl(0, 0%, 100%);
   --ui-color-black: hsl(0, 0%, 15%);
   @include build-colors;
