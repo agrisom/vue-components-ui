@@ -28,6 +28,7 @@ export default defineConfig({
           const paths = [
             '@use \'sass:math\';',
             '@use \'@/shared/style/style.scss\';',
+            '@use \'@/shared/style/utils/functions.scss\';',
           ];
           return paths.join(LF) + LF + content;
         },

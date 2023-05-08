@@ -13,7 +13,7 @@ module.exports = {
         options: {
           additionalData: content => {
             const LF = '\n';
-            const paths = ['@use \'sass:math\';', '@use \'@/shared/style/style.scss\';'];
+            const paths = ['@use \'sass:math\';', '@use \'@/shared/style/style.scss\';', '@use \'@/shared/style/utils/_functions.scss\';'];
             return paths.join(LF) + LF + content;
           },
           implementation: require('sass')

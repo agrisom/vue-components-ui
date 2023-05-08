@@ -18,12 +18,12 @@ $palette: (
     @if $color-name == 'grey' {
       @for $var from 1 through 9 {
         $lightness: calc(#{map.get($color-value, "l")} + #{map.get($grey-lightness-variation, $var)});
-        --ui-color-#{$color-name}--#{$var}00: hsl(#{map.get($color-value, "h")} #{map.get($color-value, "s")} #{$lightness});
+        --ui-color-#{$color-name}--#{$var}0: hsl(#{map.get($color-value, "h")} #{map.get($color-value, "s")} #{$lightness});
       }
     } @else {
       @for $var from 1 through 5 {
         $lightness: calc(#{map.get($color-value, "l")} + #{map.get($color-lightness-variation, $var)});
-        --ui-color-#{$color-name}--#{$var}00: hsl(#{map.get($color-value, "h")} #{map.get($color-value, "s")} #{$lightness});
+        --ui-color-#{$color-name}--#{$var}0: hsl(#{map.get($color-value, "h")} #{map.get($color-value, "s")} #{$lightness});
       }
     }
   }
@@ -40,7 +40,7 @@ $palette: (
 
 :root {
   --ui-gutter: 0.25rem;
-  --ui-background-color: var(--ui-color-wite);
+  --ui-background-color: var(--ui-color-white);
   --ui-font-color-main: var(--ui-color-black);
   --ui-color-white: hsl(0, 0%, 100%);
   --ui-color-black: hsl(0, 0%, 15%);
