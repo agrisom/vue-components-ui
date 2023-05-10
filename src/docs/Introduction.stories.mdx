@@ -3,14 +3,23 @@ import { Meta } from '@storybook/blocks';
 <Meta title="Introduction" />
 
 <a href="https://github.com/agrisom" target="_blank">
-  <img src="/agrisom-logo-min.svg" alt="agrisom" style={{height: 40 + 'vh'}} />
+  <img src="agrisom-logo-min.svg" alt="agrisom" style={{height: 40 + 'vh'}} />
 </a>
+
+[![Total Downloads](https://img.shields.io/npm/dt/vue-components-ui.svg)](https://www.npmjs.com/package/vue-components-ui)
+[![Latest Release](https://img.shields.io/npm/v/vue-components-ui.svg)](https://github.com/agrisom/vue-components-ui/tags)
+[![License](https://img.shields.io/npm/l/vue-components-ui.svg)](https://github.com/agrisom/vue-components-ui/blob/master/LICENSE)
 
 # Welcome to Vue Components UI
 
-This is a Vue component library that will contain all components you need to start a new Vue project. Components are written with Vue 3 (Script setup), Rollup, TS, HTML, SCSS and fully configurable using props, slots, and css variables. This library is based on my public project [Vue library demo](https://github.com/agrisom/agrisom-vue-component-library-demo)
+Welcome to **Vue Components UI** – The ultimate library of customizable components designed to elevate your Vue projects to the next level!
 
-> This library is currently under construction. I'll be publishing new components as son as they are ready for use
+This library contains everything you need to create an amazing Vue project in no time. All of the components are built using the latest technologies including Vue 3 (Script setup), Typescript, HTML and SCSS, making them the most consistent and reliable components available. With type checking, our components are designed to catch errors, save time and improve the quality of your code. Also the rollup offers optimizations like tree shaking to remove any component that hasn't been used.
+All components are fully customizable and use props and slots to personalize every detail, while CSS variables help create unique styles that match your project's needs. 
+
+With Typescript, you can use extensions such as Volar and ESLint to autocomplete props, check errors, and more.
+
+> This library is currently under construction, but we'll be releasing new components as soon as they're tested and ready for use.
 
 ## How it works
 
@@ -28,19 +37,28 @@ This is a Vue component library that will contain all components you need to sta
 
 [![agrisom](https://s.gravatar.com/avatar/fca9ce1022597e46e338155fbee56a4d?s=80 "agrisom")](https://github.com/agrisom)
 
+<a href="https://es.linkedin.com/in/albert-griso-mendez" target="_blank">
+  <img src="linkedin.png" alt="Linkedin - Albert Griso Mendez" />
+</a>
+
 ## Installation
 
-**Using npm**
+This library is published to the [npm repository](https://www.npmjs.com/package/vue-components-ui), making the installation process a breeze. Simply add this dependency, import styles and start developing.
+
+### Dependency: npm
+
+Install the latest version:
 
 `npm install --save-dev vue-components-ui`
 
-**Import an especific version**
+Or import an especific version:
 
-`npm install --save-dev vue-components-ui#0.2.1`
+`npm install --save-dev vue-components-ui#0.1.4`
 
-## Import styles
+### Import styles
 
-We must import the css file on the main file where the Vue app is created.
+After installing the dependency, import the CSS file to your main Vue instance or HTML head to use the library's styles.
+Customize the look and feel of the components by rewriting the CSS variables to match your project's needs.
 
 **app.ts**
 
@@ -50,8 +68,8 @@ import 'vue-components-ui/style.css';
 
 ## Usage
 
-Once installed we can use the library.
-For this we import them individally on demand so the components are loaded to the browser as son as they are used for the firs time and allows Vue and vite to exclude unused components from the final compilation.
+After completing the installation steps we are ready to use the components.
+For this, import them individually on demand. This approach ensures that components are loaded only when needed, minimizing the time it takes to load your page. In addition, Vue and Vite's tree-shaking feature will automatically exclude unused components from the final build.
 
 ### Usage example
 
@@ -67,17 +85,28 @@ import { MyComponent } from 'vue-components-ui';
 </template>
 ```
 
+### Error checking and autocomplete
+
+Using Typescript will not only make implementation easier, but also faster and more efficient, resulting in higher-quality code.
+With extensions like Volar and ESLint, developers can easily manage props, catch errors, and even auto-complete code, making the development process more streamlined and efficient.
+
+<img src="typescript.gif" alt="typescript" />
+
 ## Repository
+
+All the code is public on GitHub, so you can review, learn, and even improve it for your specific needs.
 
 Check out the code on github, [agrisom/vue-components-ui](https://github.com/agrisom/vue-components-ui)
 
 ## Documentation
 
+Our **Vue Components UI library** is fully documented and testable with Storybook, a user interface development environment for testing and showcasing interactive components. We've published a version of Storybook on Netlify, where you can access documentation for each component, as well as a playground and testing tools. This way, you can easily see how each component works, test it out for yourself, and integrate it into your Vue projects with confidence.
+
 All components are testable and documented with storybook.
 
 A version of storybook is publish via netlify. There you will found documentation for every component along with a playground and testing tools
 
-[documentation](https://vue-components-ui.netlify.app)
+[Vue Components UI - Documentation](https://vue-components-ui.netlify.app)
 
 ## Changelog
 
