@@ -100,7 +100,7 @@ import { MyComponent } from 'vue-components-ui';
 Using Typescript will not only make implementation easier, but also faster and more efficient, resulting in higher-quality code.
 With extensions like Volar and ESLint, developers can easily manage props, catch errors, and even auto-complete code, making the development process more streamlined and efficient.
 
-<object data="/typescript.gif" type="gif">
+<object data="/typescript.gif" type="image/gif">
   <img src="public/typescript.gif" alt="typescript" />
 </object>
 
