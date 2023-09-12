@@ -1,0 +1,46 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Utils/Comparators"/>
+
+# 🧰 Utilidades de ordenacion Array.sort()
+
+## Importación
+
+`import { ComparatorUtil } from 'vue-components-ui';`
+
+## Uso
+
+Podemos hacer uso de typescript `Ctrl+space` para ver todas las opciones que ofrece la herramienta.
+
+```ts
+typeAwareComparator(a: unknown, b: unknown, desc: boolean): number;
+stringAlphabeticalComparator(a: string | undefined, b: string | undefined, desc: boolean) => number;
+numberComparator(a: number | bigint | undefined, b: number | bigint | undefined, desc: boolean) => number;
+booleanComparator: (a: boolean | undefined, b: boolean | undefined, desc: boolean) => number;
+dateComparator: (a: Date | undefined, b: Date | undefined, desc: boolean) => number;
+operatorComparisonUndefsLast<unknown>(a: unknown, b: unknown, desc: boolean): number;
+```
+
+### typeAwareComparator
+
+Indica la ordenación de la lista según el tipo que recibe como parametro: string, numero, boleano, fecha o undefined.
+
+### stringAlphabeticalComparator
+
+Indica que la ordenación de la lista sera de forma alfabética según la dirección especificada.
+
+### numberComparator
+
+Indica que la ordenación de la lista sera de forma numérica según la dirección especificada.
+
+### booleanComparator
+
+Indica que la ordenación de la lista sera de forma automática agrupando los valores true y false según la dirección especificada.
+
+### dateComparator
+
+Indica que la ordenación de la lista sera por orden de fechas según la dirección especificada.
+
+### operatorComparisonUndefsLast
+
+Indica que la ordenación de la lista sera de forma automática con los valores no definidos al final.

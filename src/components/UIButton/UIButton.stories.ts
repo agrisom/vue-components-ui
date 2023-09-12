@@ -1,5 +1,6 @@
 import UIButton from './UIButton.vue';
 import { listIcon } from '@/shared/types/icon.type';
+import { listColor } from '@/shared/types/color.type';
 import { listSize, listSizeX } from '@/shared/types/size.type';
 
 import type { ArgTypes, Meta, StoryObj } from '@storybook/vue3';
@@ -29,19 +30,19 @@ const meta = {
     },
     color: {
       description: 'Color from the defined palette',
-      options: ['default', 'primary', 'secondary'],
+      options: listColor,
       defaultValue: { summary: 'default' },
       table: {
-        type: { 
+        type: {
           summary: 'Color',
-          detail: '"default" | "primary" | "secondary"',
+          detail: '"default" | "primary" | "secondary" | "success" | "warning" | "error"',
         },
       },
       control: { type: 'select' },
     },
     icon: {
       description: 'The #id to the icon from your <code>sprite-icons.svg</code> that renders inside the button',
-      options: listIcon,
+      options: ['', ...listIcon],
       table: {
         type: { summary: 'Icon' },
       },
@@ -134,6 +135,12 @@ const meta = {
       defaultValue: { summary: 'false' },
       control: { type: 'boolean' },
     },
+    referrer: {
+      description: 'The noreferrer keyword for the rel attribute instructs the browser, when navigating to the target resource, to omit the Referer header and otherwise leak no referrer information — and additionally to behave as if the noopener keyword were also specified.',
+      table: { type: { summary: 'boolean' } },
+      defaultValue: { summary: 'false' },
+      control: { type: 'boolean' },
+    },
   } as ArgTypes,
   args: {
     type: 'button',
@@ -142,12 +149,13 @@ const meta = {
     size: 'md',
     align: 'center',
     target: '_blank',
-    text: 'Button text'
+    text: 'Button text',
+    disabled: false,
   },
 } satisfies Meta<typeof UIButton>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof UIButton>;
 
 export const ThemeSolid: Story = {
   args: {
@@ -191,6 +199,27 @@ export const ColorSecondary: Story = {
   args: {
     theme: 'solid',
     color: 'secondary',
+  },
+};
+
+export const ColorSuccess: Story = {
+  args: {
+    theme: 'solid',
+    color: 'success',
+  },
+};
+
+export const ColorWarning: Story = {
+  args: {
+    theme: 'solid',
+    color: 'warning',
+  },
+};
+
+export const ColorError: Story = {
+  args: {
+    theme: 'solid',
+    color: 'error',
   },
 };
 
@@ -259,30 +288,58 @@ export const Default: Story = {
   },
 };
 
+export const LoadingTransparent: Story = {
+  args: {
+    loading: true,
+    theme: 'transparent',
+  },
+};
+
 export const LoadingSolid: Story = {
   args: {
-    theme: 'solid',
     loading: true,
+    theme: 'solid',
   },
 };
 
 export const LoadingOutline: Story = {
   args: {
+    loading: true,
     theme: 'outline',
-    loading: true,
-  },
-};
-
-export const LoadingTransparent: Story = {
-  args: {
-    theme: 'transparent',
-    loading: true,
   },
 };
 
 export const LoadingText: Story = {
   args: {
-    theme: 'text',
     loading: true,
+    theme: 'text',
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+    theme: 'transparent',
+  },
+};
+
+export const DisabledSolid: Story = {
+  args: {
+    disabled: true,
+    theme: 'solid',
+  },
+};
+
+export const DisabledOutline: Story = {
+  args: {
+    disabled: true,
+    theme: 'outline',
+  },
+};
+
+export const DisabledText: Story = {
+  args: {
+    disabled: true,
+    theme: 'text',
   },
 };

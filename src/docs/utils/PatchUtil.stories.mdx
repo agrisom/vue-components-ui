@@ -1,0 +1,27 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Utils/Patch"/>
+
+# 🧰 Utilidades de patch
+
+## Importación
+
+`import { PatchUtil } from 'vue-components-ui';`
+
+## Uso
+
+En las llamadas http PATCH solo mandamos aquellos campos que han sido modificados.
+Esta herramienta permite identificar e informar esos campos con solo el objeto original y el nuevo.
+
+```ts
+getPatch<T extends object>(newObject: T, oldObject: T): Record<string, unknown> | undefined;
+```
+
+## Ejemplo de uso
+
+En el siguiente caso recupera los campos a actualizar y solo llama al servicio si existe 1+ campos.
+
+```ts
+const patch = getPatch<Client>(editClient, controlClient);
+if (patch) ClientServices.patchClient(patch);
+```

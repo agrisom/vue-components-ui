@@ -17,6 +17,10 @@
   src: url('@/assets/fonts/Roboto/Roboto-Bold.ttf') format("truetype");
 }
 
+:root {
+  --gutter: #{variables.$gutter};
+}
+
 html,body {
   margin: 0;
   padding: 0;
@@ -30,8 +34,16 @@ body {
   color: var(--ui-font-color-main);
 }
 
-button, input, select, textarea, pre {
+button, input, select, textarea {
   font-family: 'Roboto', sans-serif;
+}
+
+span {
+  line-height: 1rem;  
+}
+
+pre {
+  font-family: monospace;
 }
 
 h1, h2, h3, h4, h5, h6 {

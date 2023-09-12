@@ -7,11 +7,13 @@
   --container-padding-h: #{variables.$gutter*8};
   padding: var(--container-padding-top) var(--container-padding-h) var(--container-padding-bottom);
   box-sizing: border-box;
+
   @media (variables.$mq-tablet) {
     --container-padding-top: #{variables.$gutter*3};
     --container-padding-bottom: #{variables.$gutter*8};
     --container-padding-h: #{variables.$gutter*4};
   }
+
   @media (variables.$mq-mobile) {
     --container-padding-top: #{variables.$gutter*3};
     --container-padding-bottom: #{variables.$gutter*14};
@@ -19,21 +21,107 @@
   }
 }
 
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+
+  &--column {
+    flex-direction: column;
+  }
+
+  &--center {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &--nowrap {
+    flex-wrap: nowrap;
+  }
+
+  &--gap {
+    gap: variables.$gutter*2;
+
+    &-1 {
+      gap: variables.$gutter;
+    }
+
+    &-2 {
+      gap: variables.$gutter*2;
+    }
+
+    &-4 {
+      gap: variables.$gutter*4;
+    }
+  }
+}
+
 .resume {
   margin: 0;
+
   &__term {
     font-weight: 600;
-    color: var(--ui-font-color-main);
+    color: var(--ui-background-color);
     display: flex;
     gap: variables.$gutter*2;
     align-items: center;
   }
+
   &__definition {
     margin: variables.$gutter 0 variables.$gutter*3;
   }
+
   &__separator {
+    visibility: hidden;
     height: 1px;
-    background-color: var(--ui-color-grey--10);
+
+    &:before {
+      height: 1px;
+      visibility: visible;
+      background-color: var(--ui-color-grey--10);
+      display: block;
+      content: '';
+    }
+  }
+}
+
+.form {
+  margin: 0;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: variables.$gutter*4;
+    padding-bottom: variables.$gutter*4;
+  }
+
+  &__actions {
+    display: flex;
+    gap: variables.$gutter*4;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: variables.$gutter*4;
+  }
+
+  &__label {
+    font-weight: 600;
+    color: var(--ui-background-color);
+    display: flex;
+    gap: variables.$gutter*2;
+    align-items: center;
+  }
+
+  &__separator {
+    visibility: hidden;
+    height: 1px;
+
+    &:before {
+      height: 1px;
+      visibility: visible;
+      background-color: var(--ui-color-grey--10);
+      display: block;
+      content: '';
+    }
   }
 }
 
@@ -44,27 +132,34 @@
   align-items: center;
   margin: 0;
   padding: variables.$gutter*3;
-  border-radius: variables.$gutter*2;
+  border-radius: 4px;
   background-color: var(--alert-bg-color);
+
   &--column {
     flex-direction: column;
     align-items: start;
   }
+
   &--default {
     --alert-bg-color: var(--ui-color-grey--10);
   }
+
   &--primary {
-    --alert-bg-color: var(--ui-color-primary--10);
+    --alert-bg-color: var(--ui-color-primary--20);
   }
+
   &--secondary {
     --alert-bg-color: var(--ui-color-secondary--10);
   }
+
   &--success {
     --alert-bg-color: var(--ui-color-success--10);
   }
+
   &--warning {
     --alert-bg-color: var(--ui-color-warning--10);
   }
+
   &--error {
     --alert-bg-color: var(--ui-color-error--10);
   }
@@ -73,40 +168,57 @@
 .ml-1 {
   margin-left: variables.$gutter;
 }
+
 .ml-2 {
   margin-left: variables.$gutter*2;
 }
+
 .ml-4 {
   margin-left: variables.$gutter*4;
 }
+
 .ml-8 {
   margin-left: variables.$gutter*8;
 }
+
+.ml-auto {
+  margin-left: auto;
+}
+
 .mt-1 {
   margin-top: variables.$gutter;
 }
+
 .mt-2 {
   margin-top: variables.$gutter*2;
 }
+
 .mt-4 {
   margin-top: variables.$gutter*4;
 }
+
+.mt-auto {
+  margin-top: auto;
+}
+
 .mb-1 {
   margin-bottom: variables.$gutter;
 }
+
 .mb-2 {
   margin-bottom: variables.$gutter*2;
 }
+
+.mb-auto {
+  margin-bottom: auto;
+}
+
 .mr-2 {
   margin-right: variables.$gutter*2;
 }
 
-.no-padding {
-  padding: 0;
-}
-.padding-1 {
-  padding: variables.$gutter*4;
-  box-sizing: border-box;
+.mr-auto {
+  margin-right: auto;
 }
 
 .sr-only {
@@ -145,20 +257,36 @@
 }
 
 .color--default {
-  color: var(--ui-color-black);
+  color: var(--ui-color-grey--60);
 }
+
 .color--primary {
   color: var(--ui-color-primary--30);
 }
+
 .color--secondary {
   color: var(--ui-color-secondary--30);
 }
+
 .color--success {
   color: var(--ui-color-success--30);
 }
+
 .color--warning {
-  color: var(--ui-color-warning--30);
+  color: var(--ui-color-warning--40);
 }
+
 .color--error {
-  color: var(--ui-color-error--30);
+  color: var(--ui-color-error--40);
+}
+
+.code {
+  --pre-color: var(--ui-color-white);
+  --pre-bg-color: var(--ui-color-grey--90);
+  font-family: monospace;
+  color: var(--pre-color);
+  background-color: var(--pre-bg-color);
+  padding: variables.$gutter * 2;
+  white-space: pre;
+  overflow: auto;
 }

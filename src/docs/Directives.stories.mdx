@@ -1,0 +1,46 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Docs/Vue directives"/>
+
+# 〰 How to use
+
+A directive is a function that is used to add custom behavior to a DOM element.
+Directives are defined using the `v-` syntax and can be used to add attributes, styles, or behavior to an element.
+
+## Import
+
+We must import all used directives on the vue instance declaration.
+
+**main.ts**
+
+```ts
+import { vOverflowCopy, vOverflowTitle } from 'vue-components-ui';
+
+createApp(App)
+  .directive('overflow-title', vOverflowTitle)
+  .directive('overflow-copy', vOverflowCopy)
+```
+
+## Use
+
+### v-overflow-copy
+
+This directive allows you to copy text to the system clipboard with a simple click on the element.
+
+```html
+<span v-overflow-copy="tarea.titulo">
+  {{ tarea.titulo }}
+</span>
+```
+
+### v-overflow-title
+
+This directive adds a title to the element if the content is truncated by an overflow.
+
+```html
+<span v-overflow-title="tarea.descripcion">
+  {{ tarea.descripcion }}
+</span>
+```
+
+<img src="public/v-overflow-title.png" alt="v-overflow-title" />

@@ -2,30 +2,36 @@
 import { listIcon } from '@/shared/types/icon.type';
 import type { Icon } from '@/shared/types/icon.type';
 import type { SizeX } from '@/shared/types/size.type';
+import { computed } from 'vue';
 
-export interface Props {
+const props = withDefaults(defineProps<{
   name: Icon;
   description?: string;
   size?: SizeX;
-}
-const props: Readonly<Props> = withDefaults(defineProps<Props>(), {
+}>(), {
   name: listIcon[0],
+  description: undefined,
   size: 'md',
 });
+
+const classes = computed(() => [
+  'ui-icon',
+  'ui-icon--size-' + props.size,
+]);
 </script>
-  
+
 <template>
-  <svg :class="['icon', 'icon--size-' + props.size]">
+  <svg :class="classes">
     <desc>{{ props.description ? props.description : props.name }}</desc>
     <use :href="`#${props.name}`" />
   </svg>
 </template>
 
 <style lang="scss">
-.icon {
+.ui-icon {
   flex-shrink: 0;
-  height: var(--icon-size, 24px);
-  width: var(--icon-size, 24px);
+  height: var(--ui-icon-size, 24px);
+  width: var(--ui-icon-size, 24px);
 
   use {
     color: currentColor;
@@ -33,23 +39,23 @@ const props: Readonly<Props> = withDefaults(defineProps<Props>(), {
 
   &--size {
     &-xs {
-      --icon-size: 12px;
+      --ui-icon-size: 12px;
     }
 
     &-sm {
-      --icon-size: 16px;
+      --ui-icon-size: 16px;
     }
 
     &-md {
-      --icon-size: 24px;
+      --ui-icon-size: 24px;
     }
 
     &-lg {
-      --icon-size: 36px;
+      --ui-icon-size: 36px;
     }
 
     &-xl {
-      --icon-size: 48px;
+      --ui-icon-size: 48px;
     }
   }
 }

@@ -1,0 +1,36 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Utils/Debounce"/>
+
+# 🧰 Utilidades de debounce
+
+## Importación
+
+`import { DebounceUtil } from 'vue-components-ui';`
+
+## Uso
+
+Las funciones de rebote (debounce) no se ejecutan al momento de su invocación. En lugar de eso, su ejecución es retrasada por un periodo predeterminado de tiempo. Si la misma función es invocada de nuevo, la ejecución previa es cancelada y el tiempo de espera se reinicia.
+
+```ts
+debounce<F extends (...args: any[]) => void>(func: F, wait?: number, immediate?: boolean): (...args: Parameters<F>) => void;
+```
+
+## Ejemplo de uso
+
+En el siguiente caso se usa debounce para evitar llamar a la api con cada cambio de valor, sino que se ejecuta una vez al terminar de escribir.
+
+```html
+<template>
+  <UIInputText v-model="inputVal" @input="searchDebounce" />
+</template>
+
+<script>
+  const inputVal = ref('');
+  const searchDebounce = debounce(searchOptions);
+
+  async function searchOptions() {
+    api.get(`options?param=${inputVal.value}`)
+  }
+</script>
+```

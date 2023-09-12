@@ -1,0 +1,56 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Utils/Number"/>
+
+# 🧰 Utilidades de numéricos
+
+## Importación
+
+`import { NumberUtil } from 'vue-components-ui';`
+
+## Uso
+
+Podemos hacer uso de typescript `Ctrl+space` para ver todas las opciones que ofrece la herramienta.
+
+```ts
+localeDecimalNumber(num: number, intlOptions?: Intl.NumberFormatOptions, locale?: string | string[]): string;
+bytesToLocaleString(num: number, intlOptions?: Intl.NumberFormatOptions, locale?: string | string[]): string;
+```
+
+### localeDecimalNumber
+
+#### Input:
+
+***num*** => Numero a convertir
+
+***intlOptions*** => Define como formatear el texto [Intl.NumberFormatOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#options)
+
+***locale*** => locale definido en la app o navegador
+
+#### Output
+
+Convierte el numero a texto añadiendo los elementos de formato especificados en intlOptions. Por defecto separa millares com '.' y decimales con ','.
+
+> `NumberUtil.localeDecimalNumber(213435764.375423)` => '213.435.764,38'
+
+> `NumberUtil.localeDecimalNumber(98765.55, { style: 'currency', currency: 'EUR' })` => '98.765,55 €'
+
+### bytesToLocaleString
+
+#### Input:
+
+***num*** => Unidades de bytes en forato `number`
+
+***intlOptions*** => Define como formatear el texto [Intl.NumberFormatOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#options)
+
+***locale*** => locale definido en la app o navegador
+
+#### Output
+
+Convierte el numero en bytes a la unidad mas adiente y devuelve el nuevo valor con su unidad al final.
+
+> `NumberUtil.bytesToLocaleString(300823)` => "293.77 KB"
+
+> `NumberUtil.bytesToLocaleString(2481475)` => "2.37 MB"
+
+> `NumberUtil.bytesToLocaleString(298)` => "298 B"

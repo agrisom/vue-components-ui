@@ -1,21 +1,36 @@
-import { Preview } from '@storybook/vue3';
+import { setup } from '@storybook/vue3';
 import sprite from '/sprite.svg';
+import router from './router';
+import { alertPinia } from '@/components/UIAlert/UIAlert.pinia';
+import './reset.css';
+import '@/shared/style/style.scss';
 
-const preview: Preview = {
-  decorators: [
-    (story) => ({
-      components: { story },
-      setup() {
-        return { sprite };
-      },
-      template: `
-        <div class="svgsprites" style="display: none">
-          <iframe :src="sprite" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-        </div>
-        <story />
-      `,
-    })
-  ],
-};
+import { vOverflowCopy, vOverflowTitle } from '@/shared/directives/Overflow.directive';
+import UIMenuZone from '@/components/UIMenu/UIMenuZone.vue';
+import UITooltipZone from '@/components/UITooltip/UITooltipZone.vue';
+import UIIconSpriteLoader from '@/components/UIIcon/UIIconSpriteLoader.vue';
+import UIAlertZone from '@/components/UIAlert/UIAlertZone.vue';
 
-export default preview;
+setup((app) => {
+  app.directive('overflow-title', vOverflowTitle);
+  app.directive('overflow-copy', vOverflowCopy);
+  app.use(router);
+  app.use(alertPinia);
+});
+
+export const decorators = [
+  story => ({
+    components: { story, UIMenuZone, UITooltipZone, UIIconSpriteLoader, UIAlertZone },
+    directives: { vOverflowCopy, vOverflowTitle },
+    setup() {
+      return { sprite };
+    },
+    template: `
+      <UIMenuZone />
+      <UITooltipZone />
+      <UIIconSpriteLoader :sprite="sprite" />
+      <UIAlertZone />
+      <story />
+    `,
+  })
+];

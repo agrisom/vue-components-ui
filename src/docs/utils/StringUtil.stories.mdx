@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Utils/String"/>
+
+# 🧰 Utilidades de texto
+
+## Importación
+
+`import { StringUtil } from 'vue-components-ui';`
+
+## Uso
+
+Podemos hacer uso de typescript `Ctrl+space` para ver todas las opciones que ofrece la herramienta.
+
+```ts
+normalizeText: (text: string) => string;
+```
+
+### normalizeText
+
+#### Input:
+
+***text*** => Cadena de texto a convertir en formato string
+
+#### Output
+
+Prepara el texto para que sea fácil de comparar cadenas. Reemplaza todos los carácteres especiales por su respectivo en unicode y convierte el texto a mayúsculas.
+
+> Ej. StringUtil.normalizeText('Conversión ñ Ñ ü á') => "CONVERSION N N U A"

@@ -2,10 +2,10 @@
 $gutter: 0.25rem; // 4px
 
 // breackpoints by device
-$breackpoint-mobile: 43rem;      // max 688px
-$breackpoint-tablet: 62rem;      // max 992px
+$breackpoint-mobile: 43rem; // max 688px
+$breackpoint-tablet: 62rem; // max 992px
 // $breackpoint-desktop: 62rem; >< 120rem
-$breackpoint-ultrawide: 120rem;      // min 1920px
+$breackpoint-ultrawide: 120rem; // min 1920px
 
 // Media Queries
 $mq-ultrawide: "min-width: #{$breackpoint-ultrawide}";

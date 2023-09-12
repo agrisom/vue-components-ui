@@ -3,18 +3,23 @@
 .heading--h1 {
   @include functions.heading--h1;
 }
+
 .heading--h2 {
   @include functions.heading--h2;
 }
+
 .heading--h3 {
   @include functions.heading--h3;
 }
+
 .heading--h4 {
   @include functions.heading--h4;
 }
+
 .heading--h5 {
   @include functions.heading--h5;
 }
+
 .heading--h6 {
   @include functions.heading--h6;
 }
@@ -22,12 +27,15 @@
 .text--lg {
   @include functions.text--lg;
 }
+
 .text--md {
   @include functions.text--md;
 }
+
 .text--sm {
   @include functions.text--sm;
 }
+
 .text--xs {
   @include functions.text--xs;
 }
@@ -37,6 +45,7 @@
   font-weight: 600;
   text-transform: uppercase;
 }
+
 .subtitle {
   @include functions.text--sm;
   color: var(--ui-color-secondary--30);

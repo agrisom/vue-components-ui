@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/blocks';
 
-<Meta title="Docs/Icons"/>
+<Meta title="Components/UIIcon/How to use"/>
 
 # ☕ How to use Icons
 
@@ -17,31 +17,26 @@ SVG sprite is a unique file that groups all the svg images in your site. The spr
 
 ## Basic Use
 
-This library provides a set of icons ready to use, and more will be added. To use them just follow this steps:
+> This library provides a set of icons ready to use, and more will be added. To use them just follow this steps:
 
 1. Import the sprite file to your body page
-2. Use the component UIIcon to use the listed icons
+2. Use the component UIIconSpriteLoader with the sprite file. This component is in charge of loading the sprite file so that UIIcon can make use of those icons.
 
 **App.vue**
 
-```
-<template>
-  <div class="svgsprites">
-    <iframe :src="sprite" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-  </div>
-  <UIIcon name="home" description="Go to home" size="sm" />
-</template>
-
-<script setup lang="ts">
-import { UIIcon } from 'vue-components-ui';
+```html
+<script>
 import sprite from 'vue-components-ui/sprite.svg';
+import { UIIconSpriteLoader, UIIcon } from 'vue-components-ui';
 </script>
 
-<style>
-  .svgsprites {
-    display: none;
-  }
-</style>
+<template>
+  <UIIconSpriteLoader :sprite="sprite" />
+  <div>
+    <h1>This is an icon</h1>
+    <UIIcon name="home" />
+  </div>
+</template>
 ```
 
 ## Get more icons
@@ -127,24 +122,15 @@ The new sprite must be imported to the body like the provided with the library.
 
 **App.vue**
 
-```
-<template>
-  <div class="svgsprites">
-    <iframe :src="sprite" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-    <iframe :src="mySprite" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-  </div>
-  <UIIcon name="my-logo" description="Custom svg icon" size="sm" />
-</template>
-
-<script setup lang="ts">
-import { UIIcon } from 'vue-components-ui';
+```html
+<script>
 import sprite from 'vue-components-ui/sprite.svg';
 import mySprite from '@/assets/svg/my-sprite.svg';
+import { UIIconSpriteLoader } from 'vue-components-ui';
 </script>
 
-<style>
-  .svgsprites {
-    display: none;
-  }
-</style>
+<template>
+  <UIIconSpriteLoader :sprite="sprite" />
+  <UIIconSpriteLoader :sprite="mySprite" />
+</template>
 ```

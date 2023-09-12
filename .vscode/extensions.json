@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "mhutchie.git-graph",
+    "christian-kohler.npm-intellisense",
+    "dbaeumer.vscode-eslint",
+    "pkief.material-icon-theme",
+    "vue.vscode-typescript-vue-plugin",
+    "akamud.vscode-theme-onelight",
+    "vue.volar"
+  ]
+}

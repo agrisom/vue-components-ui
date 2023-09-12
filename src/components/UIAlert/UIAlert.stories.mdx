@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/UIAlert/How to use"/>
+
+# 🔔 How to use Alerts
+
+The UIAlert component uses the vue [teleport](https://vuejs.org/api/built-in-components.html#teleport) function to group alerts in the position defined by the UIAlertZone container component.
+
+## Use
+
+In a layout componente must add the UIAlertZone component, which will act as a container.
+
+**App.vue**
+
+```html
+<script>
+import { UIAlertZone } from 'vue-components-ui';
+</script>
+
+<template>
+  <UIAlertZone position="top-center" />
+</template>
+```
+
+### New alert
+
+We must use the AlertUtil utility according to the severity of the alert to be created: info, success, warn, error, interactive.
+
+Parameters:
+
+`(text: string, detail?: string, delay?: number, closeHidden?: boolean)`
+
+Parameters *(interactive only)*:
+
+`(text: string, route: { to: RouteLocationRaw; title?: string; icon?: Icon }, detail?: string, delay?: number, closeHidden?: boolean)`
+
+```ts
+import { AlertUtil } from 'vue-components-ui';
+
+AlertUtil.info('Information text');
+AlertUtil.success('Text message');
+AlertUtil.warn('Alerta text');
+AlertUtil.error('Error text', 'Error detail');
+AlertUtil.interactive('Element created', { to: { name: 'ElementDetail', params: { id: result.id } }, title: 'See', icon: 'eye' }, 'Details');
+```

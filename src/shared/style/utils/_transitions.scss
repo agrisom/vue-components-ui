@@ -1,66 +1,99 @@
 .fade {
-  &-enter-active, &-leave-active {
+
+  &-enter-active,
+  &-leave-active {
     transition: opacity 1s;
   }
+
   &-move {
     transition: opacity .5s;
   }
-  &-enter-from, &-leave-to {
+
+  &-enter-from,
+  &-leave-to {
     opacity: 0;
   }
 }
+
 .fade-fast {
-  &-enter-active, &-leave-active {
+
+  &-enter-active,
+  &-leave-active {
     transition: opacity .2s ease-out;
   }
-  &-enter-from, &-leave-to {
+
+  &-enter-from,
+  &-leave-to {
     opacity: 0;
   }
 }
+
 .fade-tooltip {
   &-enter-active {
     transition: opacity .2s ease-out .3s;
   }
+
   &-leave-active {
     transition: opacity .15s ease-out;
   }
-  &-enter-from, &-leave-to {
+
+  &-enter-from,
+  &-leave-to {
     opacity: 0;
   }
 }
+
 .from-left {
-  &-enter-active, &-leave-active {
+
+  &-enter-active,
+  &-leave-active {
     transition: transform 0.3s ease-out;
   }
-  &-enter-from, &-leave-to {
+
+  &-enter-from,
+  &-leave-to {
     transform: translateX(-100%);
   }
 }
+
 .from-right {
-  &-enter-active, &-leave-active {
+
+  &-enter-active,
+  &-leave-active {
     transition: transform 0.3s ease-out;
   }
-  &-enter-from, &-leave-to {
+
+  &-enter-from,
+  &-leave-to {
     transform: translateX(100%);
   }
 }
+
 .from-right-opacity {
-  &-enter-active, &-leave-active {
+
+  &-enter-active,
+  &-leave-active {
     transition: transform 0.3s ease-out, opacity 0.2s ease-out 0.1s;
   }
-  &-enter-from, &-leave-to {
+
+  &-enter-from,
+  &-leave-to {
     transform: translateX(3rem);
     opacity: 0;
   }
 }
+
 .teleport-aside {
   &-enter-active {
     transition: opacity 0s ease-out;
   }
+
   &-leave-active {
     transition: opacity 0s ease-out 0.3s;
   }
-  &-enter-from, &-leave-to {
+
+  &-enter-from,
+  &-leave-to {
     opacity: 0;
   }
 }

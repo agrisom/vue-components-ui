@@ -4,21 +4,37 @@ import UILoader from '@/components/UILoader/UILoader.vue';
 
 import type { Icon } from '@/shared/types/icon.type';
 import type { SizeX } from '@/shared/types/size.type';
+import type { Color } from '@/shared/types/color.type';
 
-export interface Props {
+const props = withDefaults(defineProps<{
   loading?: boolean;
   text?: string;
   icon?: Icon;
   iconSize?: SizeX;
-}
-
-const props: Readonly<Props> = withDefaults(defineProps<Props>(), {
+  color?: Color;
+}>(), {
+  text: undefined,
+  icon: undefined,
+  color: 'default',
   iconSize: 'md',
 });
 </script>
 
 <template>
-  <UILoader class="button__loading" v-if="props.loading" :size="props.iconSize" />
-  <UIIcon class="button__icon" v-else-if="props.icon" :name="props.icon" :size="props.iconSize" />
-  <span class="button__text" v-if="props.text">{{ props.text }}</span>
+  <UILoader
+    v-if="props.loading"
+    class="ui-button__loading"
+    :size="props.iconSize"
+    :color="props.color"
+  />
+  <UIIcon
+    v-else-if="props.icon"
+    class="ui-button__icon"
+    :name="props.icon"
+    :size="props.iconSize"
+  />
+  <span
+    v-if="props.text"
+    class="ui-button__text"
+  >{{ props.text }}</span>
 </template>

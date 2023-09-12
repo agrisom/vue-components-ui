@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref, useSlots } from 'vue';
 import ButtonContent from './ButtonContent.vue';
 
 import type { Icon } from '@/shared/types/icon.type';
 import type { Size, SizeX } from '@/shared/types/size.type';
-import type { ThemeButton, TypeButton, AlignButton, ColorButton } from './UIButton.types';
+import type { Color } from '@/shared/types/color.type';
+import type { ThemeButton, TypeButton, AlignButton } from './UIButton.types';
 import type { RouteLocationRaw } from 'vue-router';
 
-export interface Props {
+const props = withDefaults(defineProps<{
   type?: TypeButton;
   theme?: ThemeButton;
-  color?: ColorButton;
+  color?: Color;
   size?: Size;
   iconSize?: SizeX;
   align?: AlignButton;
@@ -23,34 +24,42 @@ export interface Props {
   reverseOrder?: boolean;
   disabled?: boolean;
   loading?: boolean;
+  referrer?: boolean;
+  rounded?: boolean;
   class?: string;
-}
-
-const props: Readonly<Props> = withDefaults(defineProps<Props>(), {
+}>(), {
   type: 'button',
   theme: 'transparent',
   color: 'default',
   size: 'md',
+  iconSize: undefined,
   align: 'center',
+  icon: undefined,
+  text: undefined,
+  href: undefined,
+  to: undefined,
   target: '_blank',
+  class: undefined,
 });
 
 const emit = defineEmits<{
   (e: 'clicked', event: Event): void;
 }>();
 
+const slots = useSlots();
+
 const classes = computed(() => [
-  'button',
-  'button--theme-' + props.theme,
-  'button--color-' + props.color,
-  'button--align-' + props.align,
-  'button--size-' + props.size,
+  'ui-button',
+  'ui-button--theme-' + props.theme,
+  'ui-button--color-' + props.color,
+  'ui-button--align-' + props.align,
+  'ui-button--size-' + props.size,
   {
-    'button--block': props.block,
-    'button--reverse': props.reverseOrder,
-    'button--rounded': props.icon && !props.text && props.theme !== 'text',
-    'button--disabled': props.disabled,
-    'button--loading': props.loading,
+    'ui-button--block': props.block,
+    'ui-button--reverse': props.reverseOrder,
+    'ui-button--rounded': props.rounded || (props.icon && !props.text && props.theme !== 'text' && !slots['default']),
+    'ui-button--disabled': props.disabled,
+    'ui-button--loading': props.loading,
   },
   props.class,
 ]);
@@ -63,44 +72,87 @@ function clicked(event: MouseEvent) {
   }
 }
 
+const relValue = computed(() => {
+  const value = ['noopener'];
+  if (!props.referrer) value.push('noreferrer');
+  return value.join(' ');
+});
+
 const buttonRef = ref<HTMLButtonElement>();
 function focus() {
-  if(buttonRef.value) buttonRef.value.focus();
+  if (buttonRef.value) buttonRef.value.focus();
 }
 
 defineExpose({
   focus,
 });
 </script>
-  
+
 <template>
-  <router-link v-if="props.to && !props.disabled" ref="buttonRef" :class="classes" :to="props.to" @click="clicked($event)">
+  <router-link
+    v-if="props.to && !props.disabled"
+    ref="buttonRef"
+    :class="classes"
+    :to="props.to"
+    @click="clicked($event)"
+  >
     <slot>
-      <ButtonContent :text="props.text" :icon="props.icon" :loading="props.loading" :color="colorComp"
-        :iconSize="iconSizeComp" />
+      <ButtonContent
+        :text="props.text"
+        :icon="props.icon"
+        :loading="props.loading"
+        :color="colorComp"
+        :icon-size="iconSizeComp"
+      />
     </slot>
   </router-link>
-  <a v-else-if="props.href && !props.disabled" ref="buttonRef" :class="classes" :href="props.href" :target="props.target" @click="clicked($event)">
+  <a
+    v-else-if="props.href && !props.disabled"
+    ref="buttonRef"
+    :class="classes"
+    :href="props.href"
+    :target="props.target"
+    :rel="relValue"
+    @click="clicked($event)"
+  >
     <slot>
-      <ButtonContent :text="props.text" :icon="props.icon" :loading="props.loading" :color="colorComp"
-        :iconSize="iconSizeComp" />
+      <ButtonContent
+        :text="props.text"
+        :icon="props.icon"
+        :loading="props.loading"
+        :color="colorComp"
+        :icon-size="iconSizeComp"
+      />
     </slot>
   </a>
-  <button v-else ref="buttonRef" :class="classes" :type="props.type" :disabled="props.disabled" @click="clicked($event)">
+  <button
+    v-else
+    ref="buttonRef"
+    :class="classes"
+    :type="props.type"
+    :disabled="props.disabled"
+    @click="clicked($event)"
+  >
     <slot>
-      <ButtonContent :text="props.text" :icon="props.icon" :loading="props.loading" :color="colorComp"
-        :iconSize="iconSizeComp" />
+      <ButtonContent
+        :text="props.text"
+        :icon="props.icon"
+        :loading="props.loading"
+        :color="colorComp"
+        :icon-size="iconSizeComp"
+      />
     </slot>
   </button>
 </template>
 
 <style lang="scss">
-.button {
-  --button-padding: calc(var(--ui-gutter) * 2);
+.ui-button {
+  --ui-button-padding: #{variables.$gutter*2};
+  --ui-button-border-radius: 2rem;
   border: 0;
-  border-radius: 2rem;
-  background-color: var(--button-bg-color);
-  color: var(--button-text-color);
+  border-radius: var(--ui-button-border-radius);
+  background-color: var(--ui-button-bg-color);
+  color: var(--ui-button-text-color);
   font-weight: 600;
   display: inline-flex;
   outline: none;
@@ -109,15 +161,15 @@ defineExpose({
   cursor: pointer;
   box-sizing: border-box;
   align-items: center;
-  gap: calc(var(--ui-gutter) * 2);
-  padding: var(--button-padding) calc(var(--button-padding)*3);
-  box-shadow: 0px 0px 0px 1px var(--button-border-color) inset;
+  gap: variables.$gutter*2;
+  padding: var(--ui-button-padding) calc(var(--ui-button-padding)*3);
+  box-shadow: 0px 0px 0px 1px var(--ui-button-border-color) inset;
   background-position: center;
   transition: background, color;
   transition-duration: 0.5s;
 
   &:hover {
-    background: var(--button-bg-color) radial-gradient(circle, transparent 1%, var(--button-bg-color) 1%) center/15000%;
+    background: var(--ui-button-bg-color) radial-gradient(circle, transparent 1%, var(--ui-button-bg-color) 1%) center/15000%;
     text-decoration: none;
     text-stroke: 0;
     -webkit-text-stroke: 0;
@@ -138,6 +190,7 @@ defineExpose({
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     text-align: left;
+    align-self: center;
     word-break: break-all;
   }
 
@@ -148,61 +201,58 @@ defineExpose({
   &--size {
     &-sm {
       @include functions.text--sm;
-      --button-padding: var(--ui-gutter);
+      --ui-button-padding: #{variables.$gutter};
     }
 
     &-md {
       @include functions.text--md;
-      --button-padding: calc(var(--ui-gutter) * 2);
+      --ui-button-padding: #{variables.$gutter*2};
     }
 
     &-lg {
       @include functions.text--lg;
-      --button-padding: calc(var(--ui-gutter) * 2.5);
+      --ui-button-padding: #{variables.$gutter*2.5};
     }
   }
 
   &--theme {
     &-solid {
-      text-transform: uppercase;
-      --button-text-color: var(--ui-background-color);
-      --button-text-color: white;
-      --button-border-color: var(--button-color);
-      --button-bg-color: var(--button-color);
+      --ui-button-text-color: var(--ui-background-color);
+      --ui-button-border-color: var(--ui-button-color);
+      --ui-button-bg-color: var(--ui-button-color);
     }
 
     &-outline {
-      text-transform: uppercase;
-      --button-text-color: var(--button-color);
-      --button-border-color: var(--button-color);
-      --button-bg-color: transparent;
+      --ui-button-text-color: var(--ui-button-color);
+      --ui-button-border-color: var(--ui-button-color);
+      --ui-button-bg-color: transparent;
 
       &:hover,
       &:focus,
       &:active {
-        --button-text-color: var(--ui-background-color);
-        --button-bg-color: var(--button-color);
+        --ui-button-text-color: var(--ui-background-color);
+        --ui-button-bg-color: var(--ui-button-color);
       }
     }
 
     &-transparent {
-      --button-text-color: var(--button-color);
-      --button-border-color: transparent;
-      --button-bg-color: transparent;
+      --ui-button-text-color: var(--ui-button-color);
+      --ui-button-border-color: transparent;
+      --ui-button-bg-color: transparent;
 
       &:hover,
       &:focus,
       &:active {
-        --button-text-color: var(--ui-background-color);
-        --button-bg-color: var(--button-color);
+        --ui-button-text-color: var(--ui-background-color);
+        --ui-button-bg-color: var(--ui-button-color);
       }
     }
 
     &-text {
-      --button-text-color: var(--button-color);
-      --button-border-color: transparent;
-      --button-bg-color: transparent;
-      --button-padding: 0;
+      --ui-button-text-color: var(--ui-button-color);
+      --ui-button-border-color: transparent;
+      --ui-button-bg-color: transparent;
+      --ui-button-padding: 0;
       font-weight: normal;
 
       &:hover {
@@ -220,41 +270,80 @@ defineExpose({
 
   &--color {
     &-default {
-      --button-color: var(--ui-font-color-main);
+      --ui-button-color: var(--ui-color-grey--70);
 
       &:hover,
       &:focus {
-        --button-color: var(--ui-color-grey--80);
+        --ui-button-color: var(--ui-color-grey--90);
       }
 
       &:active {
-        --button-color: var(--ui-color-black);
+        --ui-button-color: var(--ui-color-black);
       }
     }
 
     &-primary {
-      --button-color: var(--ui-color-primary--30);
+      --ui-button-color: var(--ui-color-primary--30);
 
       &:hover,
       &:focus {
-        --button-color: var(--ui-color-primary--40);
+        --ui-button-color: var(--ui-color-primary--40);
       }
 
       &:active {
-        --button-color: var(--ui-color-primary--50);
+        --ui-button-color: var(--ui-color-primary--50);
       }
     }
 
     &-secondary {
-      --button-color: var(--ui-color-secondary--30);
+      --ui-button-color: var(--ui-color-secondary--30);
 
       &:hover,
       &:focus {
-        --button-color: var(--ui-color-secondary--40);
+        --ui-button-color: var(--ui-color-secondary--40);
       }
 
       &:active {
-        --button-color: var(--ui-color-secondary--50);
+        --ui-button-color: var(--ui-color-secondary--50);
+      }
+    }
+
+    &-success {
+      --ui-button-color: var(--ui-color-success--30);
+
+      &:hover,
+      &:focus {
+        --ui-button-color: var(--ui-color-success--40);
+      }
+
+      &:active {
+        --ui-button-color: var(--ui-color-success--50);
+      }
+    }
+
+    &-warning {
+      --ui-button-color: var(--ui-color-warning--30);
+
+      &:hover,
+      &:focus {
+        --ui-button-color: var(--ui-color-warning--40);
+      }
+
+      &:active {
+        --ui-button-color: var(--ui-color-warning--50);
+      }
+    }
+
+    &-error {
+      --ui-button-color: var(--ui-color-error--30);
+
+      &:hover,
+      &:focus {
+        --ui-button-color: var(--ui-color-error--40);
+      }
+
+      &:active {
+        --ui-button-color: var(--ui-color-error--50);
       }
     }
   }
@@ -266,35 +355,35 @@ defineExpose({
   }
 
   &--rounded {
-    padding: var(--button-padding);
+    padding: var(--ui-button-padding);
     margin-top: auto;
     margin-bottom: auto;
 
-    .button__text {
+    .ui-button__text {
       display: none;
     }
 
-    &.button {
+    &.ui-button {
       &--size {
         &-sm {
-          height: calc(var(--ui-gutter) * 8);
-          width: calc(var(--ui-gutter) * 8);
-          min-height: calc(var(--ui-gutter) * 8);
-          min-width: calc(var(--ui-gutter) * 8);
+          height: variables.$gutter*8;
+          width: variables.$gutter*8;
+          min-height: variables.$gutter*8;
+          min-width: variables.$gutter*8;
         }
 
         &-md {
-          height: calc(var(--ui-gutter) * 10);
-          width: calc(var(--ui-gutter) * 10);
-          min-height: calc(var(--ui-gutter) * 10);
-          min-width: calc(var(--ui-gutter) * 10);
+          height: variables.$gutter*10;
+          width: variables.$gutter*10;
+          min-height: variables.$gutter*10;
+          min-width: variables.$gutter*10;
         }
 
         &-lg {
-          height: calc(var(--ui-gutter) * 14);
-          width: calc(var(--ui-gutter) * 14);
-          min-height: calc(var(--ui-gutter) * 14);
-          min-width: calc(var(--ui-gutter) * 14);
+          height: variables.$gutter*14;
+          width: variables.$gutter*14;
+          min-height: variables.$gutter*14;
+          min-width: variables.$gutter*14;
         }
       }
     }
@@ -310,13 +399,7 @@ defineExpose({
 
   &--disabled {
     cursor: not-allowed;
-    --button-color: var(--ui-color-grey--20);
-
-    &:hover,
-    &:focus,
-    &:active {
-      --button-color: var(--ui-color-grey--30);
-    }
+    --ui-button-color: var(--ui-color-grey--40);
   }
 
   &--align {

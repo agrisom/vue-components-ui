@@ -1,8 +1,8 @@
-import type { ArgTypes, Meta, StoryObj } from '@storybook/vue3';
-import { UIIcon } from '@/LibraryDeclaration';
-
+import UIIcon from './UIIcon.vue';
 import { listIcon } from '@/shared/types/icon.type';
 import { listSizeX } from '@/shared/types/size.type';
+
+import type { ArgTypes, Meta, StoryObj } from '@storybook/vue3';
 
 const meta = {
   title: 'Components/UIIcon',
@@ -43,7 +43,7 @@ const meta = {
 } satisfies Meta<typeof UIIcon>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof UIIcon>;
 
 export const Default: Story = {};
 
@@ -79,11 +79,30 @@ export const SizeXl: Story = {
 
 export const CustomColor: Story = {
   decorators: [
-    (story) => ({
+    story => ({
       components: { story },
       template: `
-        <story style="color: tomato" />
+        <story class="color--error" />
       `,
-    })
+    }),
+  ],
+};
+
+export const AllIcons: Story = {
+  decorators: [
+    () => ({
+      components: { UIIcon },
+      setup() {
+        return { listIcon };
+      },
+      template: `
+        <div class="flex">
+          <div v-for="icon in listIcon" style="min-width: 10rem; min-height: 5rem;" class="flex flex--column flex--center flex--nowrap">
+            <UIIcon :name="icon" />
+            {{icon}}
+          </div>
+        </div>
+      `,
+    }),
   ],
 };

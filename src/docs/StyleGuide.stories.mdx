@@ -1,0 +1,100 @@
+import { Meta, Story } from '@storybook/blocks';
+import UIIcon from '@/components/UIIcon/UIIcon.vue';
+
+<Meta title="Docs/Style guide" />
+
+> If you are not seeing this page correctly, go to the detail of a component first. This will load the appropriate styles.
+
+# BEM and helpers
+
+All components use the BEM naming convention and use CSS variables to make it easy to customize according to the style of each project.
+
+# CSS class utils
+
+<p class="container">.container</p>
+
+## Headers
+
+<p className="heading--h1">.heading--h1</p>
+<p className="heading--h2">.heading--h2</p>
+<p className="heading--h3">.heading--h3</p>
+<p className="heading--h4">.heading--h4</p>
+<p className="heading--h5">.heading--h5</p>
+<p className="heading--h6">.heading--h6</p>
+
+## Text
+
+<p className="text--lg">.text--lg</p>
+<p className="text--md">.text--md</p>
+<p className="text--sm">.text--sm</p>
+<p className="text--xs">.text--xs</p>
+<p className="caption">.caption</p>
+<p className="subtitle">.subtitle</p>
+
+## Clamp text
+
+<p className="line-clamp--1"><b>.line-clamp--1 =></b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Commodo viverra maecenas accumsan lacus vel facilisis. Sit amet tellus cras adipiscing enim eu. Dignissim diam quis enim lobortis scelerisque fermentum dui. Placerat in egestas erat imperdiet. Consectetur libero id faucibus nisl tincidunt eget. Gravida dictum fusce ut placerat orci. Sapien nec sagittis aliquam malesuada bibendum arcu. Lacus suspendisse faucibus interdum posuere lorem. Eu non diam phasellus vestibulum lorem sed. Eget sit amet tellus cras adipiscing enim eu. Blandit libero volutpat sed cras ornare arcu dui. Ornare lectus sit amet est placerat in egestas erat imperdiet.</p>
+<p className="line-clamp--2"><b>.line-clamp--2 =></b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Commodo viverra maecenas accumsan lacus vel facilisis. Sit amet tellus cras adipiscing enim eu. Dignissim diam quis enim lobortis scelerisque fermentum dui. Placerat in egestas erat imperdiet. Consectetur libero id faucibus nisl tincidunt eget. Gravida dictum fusce ut placerat orci. Sapien nec sagittis aliquam malesuada bibendum arcu. Lacus suspendisse faucibus interdum posuere lorem. Eu non diam phasellus vestibulum lorem sed. Eget sit amet tellus cras adipiscing enim eu. Blandit libero volutpat sed cras ornare arcu dui. Ornare lectus sit amet est placerat in egestas erat imperdiet.</p>
+<p className="line-clamp--3"><b>.line-clamp--3 =></b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Commodo viverra maecenas accumsan lacus vel facilisis. Sit amet tellus cras adipiscing enim eu. Dignissim diam quis enim lobortis scelerisque fermentum dui. Placerat in egestas erat imperdiet. Consectetur libero id faucibus nisl tincidunt eget. Gravida dictum fusce ut placerat orci. Sapien nec sagittis aliquam malesuada bibendum arcu. Lacus suspendisse faucibus interdum posuere lorem. Eu non diam phasellus vestibulum lorem sed. Eget sit amet tellus cras adipiscing enim eu. Blandit libero volutpat sed cras ornare arcu dui. Ornare lectus sit amet est placerat in egestas erat imperdiet.</p>
+<p className="line-clamp--5"><b>.line-clamp--5 =></b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Commodo viverra maecenas accumsan lacus vel facilisis. Sit amet tellus cras adipiscing enim eu. Dignissim diam quis enim lobortis scelerisque fermentum dui. Placerat in egestas erat imperdiet. Consectetur libero id faucibus nisl tincidunt eget. Gravida dictum fusce ut placerat orci. Sapien nec sagittis aliquam malesuada bibendum arcu. Lacus suspendisse faucibus interdum posuere lorem. Eu non diam phasellus vestibulum lorem sed. Eget sit amet tellus cras adipiscing enim eu. Blandit libero volutpat sed cras ornare arcu dui. Ornare lectus sit amet est placerat in egestas erat imperdiet.</p>
+
+## Code pre
+
+<p className="code">.code</p>
+
+## Text color
+
+<p className="color--default">.color--default</p>
+<p className="color--primary">.color--primary</p>
+<p className="color--secondary">.color--secondary</p>
+<p className="color--success">.color--success</p>
+<p className="color--warning">.color--warning</p>
+<p className="color--error">.color--error</p>
+
+## Visibility
+
+<p><span>.sr-only => "</span><span className="sr-only">Text</span><span>"</span></p>
+<p><span>.small-screen-only => "</span><span className="small-screen-only">Text</span><span>"</span></p>
+<p><span>.big-screen-only => "</span><span className="big-screen-only">Text</span><span>"</span></p>
+<p><span>.mobile-screen-only => "</span><span className="mobile-screen-only">Text</span><span>"</span></p>
+<p><span>.mobile-screen-hidden => "</span><span className="mobile-screen-hidden">Text</span><span>"</span></p>
+
+## Margins
+
+<h3>Top</h3>
+
+<p className="ml-1">.ml-1</p>
+<p className="ml-2">.ml-2</p>
+<p className="ml-4">.ml-4</p>
+<p className="ml-8">.ml-8</p>
+<p className="ml-auto">.ml-auto</p>
+<p className="mt-1">.mt-1</p>
+<p className="mt-2">.ml-2</p>
+<p className="mt-4">.mt-4</p>
+<p className="mt-auto">.mt-auto</p>
+
+<h3>Bottom</h3>
+
+<p className="mb-1">.mb-1</p>
+<p className="mb-2">.mb-2</p>
+<p className="mb-auto">.mb-auto</p>
+
+<h3>Right</h3>
+
+<p className="mr-2">.mr-2</p>
+<p className="mr-auto">.mr-auto</p>
+
+## Alert box
+
+<div className="alert-box"><span>alert-box</span><span>alert-box--default</span></div>
+<div className="alert-box alert-box--column mt-2"><span>alert-box</span><span>alert-box--column</span></div>
+<div className="alert-box alert-box--default mt-2"><span>alert-box</span><span>alert-box--default</span></div>
+<div className="alert-box alert-box--primary mt-2"><span>alert-box</span><span>alert-box--primary</span></div>
+<div className="alert-box alert-box--secondary mt-2"><span>alert-box</span><span>alert-box--secondary</span></div>
+<div className="alert-box alert-box--success mt-2"><span>alert-box</span><span>alert-box--success</span></div>
+<div className="alert-box alert-box--warning mt-2"><span>alert-box</span><span>alert-box--warning</span></div>
+<div className="alert-box alert-box--error mt-2"><span>alert-box</span><span>alert-box--error</span></div>
+
+## Resume
+
+<div className="resume"><span>.resume</span><span className="resume__term">.resume__term</span><span className="resume__definition">.resume__definition</span><div className="resume__separator">.resume__separator</div><span className="resume__term">.resume__term</span><span className="resume__definition">.resume__definition</span></div>

@@ -13,7 +13,11 @@ module.exports = {
         options: {
           additionalData: content => {
             const LF = '\n';
-            const paths = ['@use \'sass:math\';', '@use \'@/shared/style/style.scss\';', '@use \'@/shared/style/utils/_functions.scss\';'];
+            const paths = [
+              '@use \'sass:math\';',
+              '@use \'@/shared/style/utils/_functions.scss\';',
+              '@use \'@/shared/style/utils/_variables.scss\';',
+            ];
             return paths.join(LF) + LF + content;
           },
           implementation: require('sass')
@@ -23,8 +27,18 @@ module.exports = {
     });
     return config;
   },
-  "stories": ["../src/docs/Introduction.stories.mdx", "../src/docs/*.mdx", "../src/components/**/*.stories.@(js|jsx|ts|tsx)"],
-  "addons": ["@storybook/addon-links", "@storybook/addon-essentials", "@storybook/addon-interactions", "storybook-addon-sass-postcss"],
+  "stories": [
+    "../src/docs/Introduction.stories.mdx",
+    "../src/docs/*.mdx",
+    "../src/docs/**/*.mdx",
+    "../src/components/**/*.stories.@(js|jsx|ts|tsx|mdx)"
+  ],
+  "addons": [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/addon-interactions",
+    "storybook-addon-sass-postcss"
+  ],
   "framework": {
     "name": "@storybook/vue3-vite",
     "options": {}
