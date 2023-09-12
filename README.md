@@ -1,5 +1,7 @@
 <a href="https://github.com/agrisom" title="agrisom" target="_blank">
-  <img src="public/agrisom-logo-min.svg" alt="agrisom" style="max-width: 500px" />
+  <object data="/agrisom-logo-min.svg" type="image/svg+xml" style="max-width: 500px">
+    <img src="public/agrisom-logo-min.svg" alt="agrisom" style="max-width: 500px" />
+  </object>
 </a>
 
 <br>
@@ -44,7 +46,9 @@ With Typescript, you can use extensions such as Volar and ESLint to autocomplete
 </a>
 <br>
 <a href="https://es.linkedin.com/in/albert-griso-mendez" target="_blank">
-  <img src="public/linkedin.png" alt="Linkedin - Albert Griso Mendez" />
+  <object data="/linkedin.png" type="image/png">
+    <img src="public/linkedin.png" alt="Linkedin - Albert Griso Mendez" />
+  </object>
 </a>
 
 ## Installation
@@ -96,7 +100,9 @@ import { MyComponent } from 'vue-components-ui';
 Using Typescript will not only make implementation easier, but also faster and more efficient, resulting in higher-quality code.
 With extensions like Volar and ESLint, developers can easily manage props, catch errors, and even auto-complete code, making the development process more streamlined and efficient.
 
-<img src="public/typescript.gif" alt="typescript" />
+<object data="/typescript.gif" type="gif">
+  <img src="public/typescript.gif" alt="typescript" />
+</object>
 
 ## Repository
 
