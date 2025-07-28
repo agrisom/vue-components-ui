@@ -41,7 +41,7 @@ export { listIcon } from './shared/types/icon.type';
 export { listColor } from './shared/types/color.type';
 
 // Directives
-export { vOverflowCopy, vOverflowTitle } from './shared/directives/Overflow.directive';
+export { vCopyText, vOverflowCopy, vOverflowTitle } from './shared/directives/Overflow.directive';
 
 // Utils
 export { default as AlertUtil } from './components/UIAlert/UIAlert.util';

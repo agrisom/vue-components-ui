@@ -1,4 +1,4 @@
-export function debounce<F extends (...args: any[]) => void>(func: F, wait = 500, immediate?: boolean): (...args: Parameters<F>) => void {
+export function debounce<F extends(...args: any[]) => void>(func: F, wait = 500, immediate?: boolean): (...args: Parameters<F>) => void {
   let timeout: NodeJS.Timeout | undefined;
   return (...args: Parameters<F>) => {
     const later = () => {

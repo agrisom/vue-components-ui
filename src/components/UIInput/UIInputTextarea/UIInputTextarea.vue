@@ -25,7 +25,7 @@ import type { Size } from '@/shared/types/size.type';
 
 const props = withDefaults(defineProps<{
   id?: string;
-  name?: string;
+  name: string;
   modelValue?: string;
   placeholder?: string;
   size?: Size;
@@ -33,7 +33,6 @@ const props = withDefaults(defineProps<{
   required?: boolean;
 }>(), {
   id: undefined,
-  name: undefined,
   modelValue: '',
   placeholder: undefined,
   size: 'md',
@@ -53,7 +52,7 @@ function onChangeInput(event: Event): void {
 }
 
 function focus() {
-  inputElementRef.value && inputElementRef.value.focus();
+  inputElementRef.value?.focus();
 }
 
 defineExpose({

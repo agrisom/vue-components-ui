@@ -39,7 +39,7 @@ export default defineConfig({
     cssCodeSplit: false,
     lib: {
       entry: "./src/LibraryDeclaration.ts",
-      formats: ["es", "cjs"],
+      formats: ["es"],
       name: "LibraryDeclaration",
       fileName: format => `vue-components-ui.${format}.js`
     },
@@ -52,6 +52,11 @@ export default defineConfig({
         }
       }
     }
+  },
+  esbuild: {
+    supported: {
+      'top-level-await': true //browsers can handle top-level-await features
+    },
   },
   resolve: {
     alias: {

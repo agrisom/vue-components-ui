@@ -68,7 +68,7 @@ import type { Size } from '@/shared/types/size.type';
 
 const props = withDefaults(defineProps<{
   id?: string;
-  name?: string;
+  name: string;
   modelValue?: File[];
   accept?: string[];
   placeholder?: string;
@@ -81,7 +81,6 @@ const props = withDefaults(defineProps<{
   required?: boolean;
 }>(), {
   id: undefined,
-  name: undefined,
   modelValue: () => [] as File[],
   accept: () => [] as string[],
   placeholder: 'No se ha seleccionado ningun fichero',
@@ -123,7 +122,7 @@ function removeFile(ind: number) {
 }
 
 function focus() {
-  inputElementRef.value && inputElementRef.value.focus();
+  if (inputElementRef.value) inputElementRef.value.focus();
 }
 
 defineExpose({

@@ -48,7 +48,7 @@ import type { Icon } from '@/shared/types/icon.type';
 
 const props = withDefaults(defineProps<{
   id?: string;
-  name?: string;
+  name: string;
   modelValue?: boolean;
   label?: string;
   icon?: Icon;
@@ -60,7 +60,6 @@ const props = withDefaults(defineProps<{
   required?: boolean;
 }>(), {
   id: undefined,
-  name: undefined,
   modelValue: false,
   label: '',
   icon: 'check',
@@ -90,7 +89,7 @@ function setIsFocus(event: Event) {
 }
 
 function focus() {
-  inputElementRef.value && inputElementRef.value.focus();
+  if (inputElementRef.value) inputElementRef.value.focus();
 }
 
 onMounted(() => {

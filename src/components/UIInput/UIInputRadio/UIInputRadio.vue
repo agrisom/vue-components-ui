@@ -48,7 +48,6 @@ const props = withDefaults(defineProps<{
   required?: boolean;
 }>(), {
   id: undefined,
-  name: undefined,
   modelValue: '',
   options: () => [] as InputValueRadio[],
   size: 'md',

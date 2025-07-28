@@ -74,7 +74,7 @@ function setIsFocus(event: Event) {
 }
 
 function focus() {
-  inputElementRef.value && inputElementRef.value.focus();
+  if (inputElementRef.value) inputElementRef.value.focus();
 }
 
 onMounted(() => {

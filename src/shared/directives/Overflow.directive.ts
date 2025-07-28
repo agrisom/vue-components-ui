@@ -12,6 +12,12 @@ export const vOverflowCopy = {
   },
 };
 
+export const vCopyText = {
+  mounted: (el: HTMLElement, text?: { value: string }) => {
+    el.addEventListener('click', event => copyText(event, text?.value));
+  },
+};
+
 const isOverflow = (target: HTMLElement) => {
   return target.offsetWidth !== target.scrollWidth || target.offsetHeight !== target.scrollHeight;
 };

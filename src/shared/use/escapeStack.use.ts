@@ -5,7 +5,7 @@ const listeners: Listener[] = [];
 window.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' || event.key === 'Esc') {
     const listener = listeners.pop();
-    listener && listener(event);
+    if (listener) listener(event);
   }
 });
 

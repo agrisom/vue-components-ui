@@ -73,7 +73,7 @@ import { InputValue } from '../UIInput.types';
 
 const props = withDefaults(defineProps<{
   id?: string;
-  name?: string;
+  name: string;
   modelValue?: string;
   placeholder?: string;
   unknownOption?: string;
@@ -85,7 +85,6 @@ const props = withDefaults(defineProps<{
   required?: boolean;
 }>(), {
   id: undefined,
-  name: undefined,
   modelValue: '',
   placeholder: undefined,
   unknownOption: undefined,
@@ -109,7 +108,7 @@ function onChangeInput(event: Event): void {
 }
 
 function focus() {
-  inputElementRef.value && inputElementRef.value.focus();
+  if (inputElementRef.value) inputElementRef.value.focus();
 }
 
 defineExpose({

@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.1] - 2025-07-28
+
+- Upgraded all package.json dependencies
+- Upgraded storybook to 8.6.11
+- Upgraded eslint to 9.26.0
+
+View github [changelog](https://github.com/agrisom/vue-components-ui/compare/V1.0.0...V1.0.1)
+
 ## [1.0.0]\* - 2023-09-12
 
 >**\*This version is considered the first stable release.** All future changes will be compatible unless there are major version upgrades. Development is ongoing, and I am working to release new components in the coming months.

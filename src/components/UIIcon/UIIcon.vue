@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { listIcon } from '@/shared/types/icon.type';
 import type { Icon } from '@/shared/types/icon.type';
 import type { SizeX } from '@/shared/types/size.type';
 import { computed } from 'vue';
@@ -9,7 +8,6 @@ const props = withDefaults(defineProps<{
   description?: string;
   size?: SizeX;
 }>(), {
-  name: listIcon[0],
   description: undefined,
   size: 'md',
 });

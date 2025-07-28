@@ -46,7 +46,7 @@ import type { Icon } from '@/shared/types/icon.type';
 
 const props = withDefaults(defineProps<{
   id?: string;
-  name?: string;
+  name: string;
   modelValue?: string;
   placeholder?: string;
   list?: string;
@@ -58,7 +58,6 @@ const props = withDefaults(defineProps<{
   required?: boolean;
 }>(), {
   id: undefined,
-  name: undefined,
   modelValue: '',
   placeholder: undefined,
   list: undefined,
@@ -82,7 +81,7 @@ function onChangeInput(event: Event): void {
 }
 
 function focus() {
-  inputElementRef.value && inputElementRef.value.focus();
+  if (inputElementRef.value) inputElementRef.value.focus();
 }
 
 defineExpose({
